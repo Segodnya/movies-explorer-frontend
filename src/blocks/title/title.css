@@ -1,0 +1,26 @@
+.title {
+  padding: 0;
+  margin: 0;
+  max-width: 730px;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 116%;
+  text-align: center;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (width < 1024px) {
+  .title {
+    max-width: 680px;
+    font-size: 48px;
+    line-height: 130%;
+  }
+}
+
+@media screen and (width < 768px) {
+  .title {
+    max-width: 292px;
+    font-size: 29px;
+    line-height: 128%;
+  }
+}

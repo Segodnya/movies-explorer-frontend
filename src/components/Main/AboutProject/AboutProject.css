@@ -1,6 +1,3 @@
-.about-project {
-  padding: 110px 0;
-}
 .about-project__paragraphs {
   padding: 70px 0 110px;
   display: flex;
@@ -63,9 +60,6 @@
 }
 
 @media screen and (width < 1024px) {
-  .about-project {
-    padding: 90px 0;
-  }
   .about-project__paragraphs {
     padding: 70px 0 93px;
     gap: 30px;
@@ -77,9 +71,6 @@
 }
 
 @media screen and (width < 768px) {
-  .about-project {
-    padding: 70px 0;
-  }
   .about-project__paragraphs {
     flex-direction: column;
     padding: 60px 0;

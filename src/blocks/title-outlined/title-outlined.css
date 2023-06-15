@@ -1,4 +1,6 @@
 .title-outlined {
+  width: 100%;
+  max-width: 1140px;
   margin: 0;
   height: 50px;
   font-weight: 400;

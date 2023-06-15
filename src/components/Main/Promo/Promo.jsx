@@ -4,7 +4,7 @@ import './Promo.css';
 const Promo = () => {
   return (
     <section className="promo">
-      <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
+      <h1 className="title">Учебный проект студента факультета Веб-разработки.</h1>
       <ul className="list">
         <li>
           <a className="link promo__link" href="#">

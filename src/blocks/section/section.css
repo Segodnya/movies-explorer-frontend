@@ -1,0 +1,13 @@
+.section {
+  padding: 110px 0;
+}
+@media screen and (width < 1024px) {
+  .section {
+    padding: 90px 0;
+  }
+}
+@media screen and (width < 768px) {
+  .section {
+    padding: 70px 0;
+  }
+}
