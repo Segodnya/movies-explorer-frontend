@@ -4,5 +4,7 @@
 /* Fonts */
 @import url(./vendor/fonts/fonts.css);
 
-/* App */
-@import url(./components/App/App.css);
+/* Common Blocks */
+
+@import url(./blocks//link//link.css);
+@import url(./blocks//list//list.css);
