@@ -1,0 +1,36 @@
+.navigation {
+  gap: 30px;
+}
+.navigation__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+}
+.navigation__link_type_normal {
+  color: #fff;
+}
+.navigation__link_type_highlighted {
+  width: 76px;
+  border-radius: 3px;
+  background: #3ddc84;
+  color: #000000;
+}
+
+@media screen and (width < 768px) {
+  .navigation {
+    gap: 14px;
+  }
+  .navigation__link {
+    height: 26px;
+    font-size: 10px;
+    line-height: 160%;
+  }
+  .navigation__link_type_highlighted {
+    width: 54px;
+    border-radius: 3px;
+  }
+}
