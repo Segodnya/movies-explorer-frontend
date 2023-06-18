@@ -1,0 +1,28 @@
+.movies {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0 80px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.movies__button {
+  margin: 0 auto;
+  width: 320px;
+  height: 36px;
+  border-radius: 6px;
+  border: none;
+  background-color: #2f2f2f;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media screen and (width < 768px) {
+  .movies__button {
+    width: 240px;
+  }
+}
