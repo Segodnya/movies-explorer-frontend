@@ -12,3 +12,22 @@
   width: 38px;
   height: 38px;
 }
+.header__menu-button {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header__menu-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+  }
+  .header__menu-icon {
+    display: block;
+  }
+}

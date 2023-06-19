@@ -1,23 +1,18 @@
 import React from 'react';
 import './Navigation.css';
 
-const Navigation = () => {
+function Navigation({ isMenuOpen, handleMenuClick }) {
   return (
-    <nav>
-      <ul className="list navigation">
-        <li>
-          <a className="link navigation__link navigation__link_type_normal" href="/signup">
-            Регистрация
-          </a>
-        </li>
-        <li>
-          <a className="link navigation__link navigation__link_type_highlighted" href="/signin">
-            Войти
-          </a>
-        </li>
-      </ul>
+    <nav className={`navigation ${isMenuOpen ? 'navigation_open' : ''}`}>
+      <button onClick={handleMenuClick} className="navigation__close"></button>
+      <a href="/signup" className="link navigation__link navigation__link_type_normal">
+        Регистрация
+      </a>
+      <a href="/signin" className={`link navigation__link navigation__link_type_highlighted ${isMenuOpen ? 'navigation__link_type_highlighted_open' : ''}`}>
+        Войти
+      </a>
     </nav>
   );
-};
+}
 
 export default Navigation;
