@@ -1,9 +1,10 @@
 .movies-card-list {
   width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
   padding: 70px 0 50px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   row-gap: 40px;
   column-gap: 20px;
 }

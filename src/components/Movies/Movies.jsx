@@ -3,13 +3,113 @@ import './Movies.css';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import SearchForm from './SearchForm/SearchForm';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
+import cover from '../../images/movie.png';
 
 const Movies = () => {
+  let initialCards = [
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+    {
+      title: 'Gimme Danger: История Игги и The Stooges',
+      cover: cover,
+      duration: '1ч 42м',
+      isOwn: false,
+    },
+  ];
+
   return (
     <section className="movies">
       <SearchForm />
       <FilterCheckbox />
-      <MoviesCardList />
+      <MoviesCardList movies={initialCards} />
       <button className="movies__button">Еще</button>
     </section>
   );
