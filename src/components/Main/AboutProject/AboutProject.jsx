@@ -1,18 +1,28 @@
-import React from 'react';
-import './AboutProject.css';
+import React from "react";
+import "./AboutProject.css";
 
 const AboutProject = () => {
   return (
-    <section className="section">
+    <section className="section" id="about-project">
       <h2 className="title-outlined about-project__title">О проекте</h2>
       <div className="about-project__paragraphs">
         <article className="about-project__article">
-          <h3 className="about-prject__article-title">Дипломный проект включал 5 этапов</h3>
-          <p className="about-prject__article-text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
+          <h3 className="about-prject__article-title">
+            Дипломный проект включал 5 этапов
+          </h3>
+          <p className="about-prject__article-text">
+            Составление плана, работу над бэкендом, вёрстку, добавление
+            функциональности и финальные доработки.
+          </p>
         </article>
         <article className="about-project__article">
-          <h3 className="about-prject__article-title">На выполнение диплома ушло 5 недель</h3>
-          <p className="about-prject__article-text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
+          <h3 className="about-prject__article-title">
+            На выполнение диплома ушло 5 недель
+          </h3>
+          <p className="about-prject__article-text">
+            У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
+            соблюдать, чтобы успешно защититься.
+          </p>
         </article>
       </div>
       <div className="digram">

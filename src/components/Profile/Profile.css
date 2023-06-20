@@ -36,11 +36,13 @@
   flex-direction: column;
 }
 .profile__button {
+  cursor: pointer;
   border: none;
   background: transparent;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
+  transition: all 0.3s ease-in-out;
 }
 .profile__button:first-of-type {
   margin: 0 0 16px;

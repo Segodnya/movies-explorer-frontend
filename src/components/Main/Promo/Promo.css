@@ -34,6 +34,9 @@
   font-size: 12px;
   line-height: 133%;
 }
+.promo__link:hover {
+  background-color: #555;
+}
 
 @media screen and (width < 1024px) {
   .promo {

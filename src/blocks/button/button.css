@@ -1,0 +1,7 @@
+.button {
+  transition: all 0.3 ease-in;
+}
+.button:hover {
+  scale: 1.2;
+  text-decoration: underline;
+}

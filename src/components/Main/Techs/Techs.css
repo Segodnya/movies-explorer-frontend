@@ -32,6 +32,9 @@
   font-size: 14px;
   line-height: 17px;
 }
+.techs__link:hover {
+  background-color: #555;
+}
 
 @media screen and (width < 1024px) {
   .techs__title {
