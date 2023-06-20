@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 import menu from "../../images/menu_icon.svg";
 import "./Header.css";
 
-function Header() {
+function Header({ isLoggedIn }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function handleMenuClick() {
@@ -19,7 +19,11 @@ function Header() {
       <button onClick={handleMenuClick} className="header__menu-button">
         <img className="header__menu-icon" src={menu} alt="menu button" />
       </button>
-      <Navigation isMenuOpen={isMenuOpen} handleMenuClick={handleMenuClick} />
+      <Navigation
+        isLoggedIn={isLoggedIn}
+        isMenuOpen={isMenuOpen}
+        handleMenuClick={handleMenuClick}
+      />
     </header>
   );
 }

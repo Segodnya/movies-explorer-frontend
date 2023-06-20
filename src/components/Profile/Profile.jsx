@@ -1,5 +1,5 @@
-import React from 'react';
-import './Profile.css';
+import React from "react";
+import "./Profile.css";
 
 const Profile = () => {
   return (
@@ -16,8 +16,12 @@ const Profile = () => {
         </div>
       </div>
       <div className="profile__buttons">
-        <button className="profile__button profile__button_color_white">Редактировать</button>
-        <button className="profile__button profile__button_color_red">Выйти из аккаунта</button>
+        <button className="profile__button profile__button_color_white">
+          Редактировать
+        </button>
+        <button className="profile__button profile__button_color_red">
+          Выйти из аккаунта
+        </button>
       </div>
     </section>
   );

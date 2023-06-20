@@ -1,14 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import logo from "../../images/logo.svg";
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const { values, errors, handleChange, isFormValid } = useForm();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoggedIn(true);
+    navigate("/");
   };
 
   return (

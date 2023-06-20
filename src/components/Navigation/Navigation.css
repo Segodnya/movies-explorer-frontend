@@ -4,6 +4,10 @@
   justify-content: flex-end;
   align-items: center;
 }
+.navigation_centered {
+  width: calc(50% + 120px);
+  justify-content: space-between;
+}
 .navigation__close {
   display: none;
 }
@@ -16,6 +20,9 @@
   font-size: 12px;
   line-height: 133%;
 }
+.navigation__link_cornered {
+  justify-self: flex-end;
+}
 .navigation__link_type_normal {
   color: #fff;
 }
@@ -27,6 +34,18 @@
 }
 .navigation__link_type_highlighted_open {
   opacity: 1;
+}
+.navigation__links_centered {
+  display: flex;
+  gap: 16px;
+  align-self: flex-start;
+}
+.navigation__pic {
+  margin: 0 0 0 7px;
+  display: block;
+  object-fit: cover;
+  width: 26px;
+  height: 26px;
 }
 
 @media screen and (width < 769px) {
