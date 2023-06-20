@@ -36,6 +36,16 @@
   border-radius: 8px;
   color: #fff;
 }
+.auth__input_errored {
+  color: #ee3465;
+}
+.auth__error {
+  margin: 0 0 20px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+}
 .auth__button-save {
   border: none;
   cursor: pointer;
@@ -44,6 +54,10 @@
   background: #4285f4;
   border-radius: 3px;
   color: #fff;
+}
+.auth__button-save:disabled {
+  cursor: default;
+  background: #8b8b8b;
 }
 .auth__tip {
   display: flex;
