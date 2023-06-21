@@ -24,7 +24,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.footer_copyright {
+.footer__copyright {
   margin: 0;
   font-weight: 400;
   font-size: 13px;
@@ -62,7 +62,7 @@
     align-items: center;
     gap: 30px;
   }
-  .footer_copyright {
+  .footer__copyright {
     font-size: 12px;
     line-height: 15px;
     color: #8b8b8b;

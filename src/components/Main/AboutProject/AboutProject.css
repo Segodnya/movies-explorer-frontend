@@ -9,20 +9,20 @@
   gap: 22px;
   max-width: 550px;
 }
-.about-prject__article-title {
+.about-project__article-title {
   margin: 0;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.04em;
 }
-.about-prject__article-text {
+.about-project__article-text {
   margin: 0;
   font-weight: 400;
   font-size: 14px;
   line-height: 143%;
 }
-.digram {
+.diagram {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -64,7 +64,7 @@
     padding: 70px 0 93px;
     gap: 36px;
   }
-  .about-prject__article-text {
+  .about-project__article-text {
     font-size: 12px;
     line-height: 150%;
   }
@@ -79,15 +79,15 @@
   .about-project__article {
     gap: 19px;
   }
-  .about-prject__article-title {
+  .about-project__article-title {
     font-size: 18px;
     line-height: 22px;
   }
-  .about-prject__article-text {
+  .about-project__article-text {
     font-size: 11px;
     line-height: 145%;
   }
-  .digram {
+  .diagram {
     font-size: 11px;
     gap: 9px;
   }

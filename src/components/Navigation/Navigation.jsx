@@ -20,7 +20,7 @@ function Navigation({ isMenuOpen, handleMenuClick }) {
           <a
             href="/"
             className={`link navigation__link navigation__link_type_normal ${
-              isMenuOpen ? "navigation__link_type_highlighted_open" : ""
+              isMenuOpen ? "navigation__link_type_highlighted-open" : ""
             }`}
           >
             Главная
@@ -29,7 +29,7 @@ function Navigation({ isMenuOpen, handleMenuClick }) {
         <a
           href="/movies"
           className={`link navigation__link navigation__link_type_normal ${
-            isMenuOpen ? "navigation__link_type_highlighted_open" : ""
+            isMenuOpen ? "navigation__link_type_highlighted-open" : ""
           }`}
         >
           Фильмы
