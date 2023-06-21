@@ -17,6 +17,7 @@
   border-bottom: 1px solid #424242;
 }
 .movie-card__title {
+  max-width: 226px;
   margin: 0;
   font-weight: 500;
   font-size: 13px;
@@ -24,6 +25,7 @@
   color: #ffffff;
 }
 .movie-card__button {
+  display: block;
   border: none;
   background: transparent;
   background-repeat: no-repeat;
@@ -54,6 +56,9 @@
     width: 340px;
     height: 190px;
   }
+  .movie-card__title {
+    max-width: 296px;
+  }
 }
 
 @media screen and (width < 768px) {
@@ -65,6 +70,7 @@
     height: 168px;
   }
   .movie-card__title {
+    max-width: 256px;
     font-size: 12px;
     line-height: 15px;
   }

@@ -29,7 +29,7 @@
     border: none;
     cursor: pointer;
     width: 44px;
-    height: 44px;
+    min-height: 44px;
     background: transparent;
   }
   .header__menu-icon {

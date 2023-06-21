@@ -42,7 +42,7 @@
   flex-basis: 80%;
 }
 .diagram__row:nth-of-type(1) {
-  height: 36px;
+  min-height: 36px;
   line-height: 36px;
 }
 .diagram__row:nth-of-type(1) .diagram__col:nth-child(1) {

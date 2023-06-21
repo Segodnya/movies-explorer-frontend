@@ -24,7 +24,7 @@
   justify-content: center;
   align-items: center;
   width: 90px;
-  height: 60px;
+  min-height: 60px;
   border-radius: 10px;
   background-color: #303030;
   color: #fff;
@@ -50,7 +50,7 @@
   }
   .techs__link {
     width: 84px;
-    height: 57px;
+    min-height: 57px;
     font-size: 12px;
     line-height: 15px;
   }

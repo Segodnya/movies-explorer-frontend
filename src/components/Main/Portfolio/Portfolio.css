@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  height: 90px;
+  min-height: 90px;
   border-bottom: 1px solid #424242;
 }
 .portfolio__item:last-of-type {
@@ -65,7 +65,7 @@
     line-height: 143%;
   }
   .portfolio__item {
-    height: 68px;
+    min-height: 68px;
   }
   .portfolio__link {
     font-size: 18px;
