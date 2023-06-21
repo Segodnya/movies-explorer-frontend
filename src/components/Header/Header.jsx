@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import logo from "../../images/logo.svg";
 import menu from "../../images/menu_icon.svg";
@@ -13,17 +14,36 @@ function Header({ isLogged }) {
 
   return (
     <header className="header">
-      <a href="/" className="link">
-        <img src={logo} alt="Logo" className="header__logo" />
+      <a href="/" className="link header__logo">
+        <img src={logo} alt="Logo" />
       </a>
-      <button onClick={handleMenuClick} className="header__menu-button">
-        <img className="header__menu-icon" src={menu} alt="menu button" />
-      </button>
-      <Navigation
-        isLogged={isLogged}
-        isMenuOpen={isMenuOpen}
-        handleMenuClick={handleMenuClick}
-      />
+
+      {isLogged ? (
+        <>
+          <button onClick={handleMenuClick} className="header__menu-button">
+            <img className="header__menu-icon" src={menu} alt="menu button" />
+          </button>
+          <Navigation
+            isMenuOpen={isMenuOpen}
+            handleMenuClick={handleMenuClick}
+          />
+        </>
+      ) : (
+        <nav className={`navigation`}>
+          <Link
+            to="/signup"
+            className="link navigation__link navigation__link_type_normal"
+          >
+            Регистрация
+          </Link>
+          <Link
+            to="/signin"
+            className="link navigation__link navigation__link_type_highlighted"
+          >
+            Войти
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }
