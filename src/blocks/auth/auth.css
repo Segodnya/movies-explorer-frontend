@@ -88,10 +88,6 @@
     flex-direction: column;
     padding-top: 56px;
   }
-  .auth__logo {
-    width: 38px;
-    align-self: center;
-  }
   .auth__title {
     align-self: center;
     margin: 50px 0 80px;

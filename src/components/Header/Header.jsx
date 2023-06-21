@@ -14,7 +14,7 @@ function Header({ isLogged }) {
 
   return (
     <header className="header">
-      <a href="/" className="link header__logo">
+      <a href="/" className="link logo">
         <img src={logo} alt="Logo" />
       </a>
 

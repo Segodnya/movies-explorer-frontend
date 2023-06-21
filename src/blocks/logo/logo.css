@@ -1,0 +1,12 @@
+.logo {
+  display: block;
+  object-fit: cover;
+  width: 38px;
+  height: 38px;
+  flex-basis: 0;
+}
+@media screen and (width < 768px) {
+  .logo_auth {
+    align-self: center;
+  }
+}
