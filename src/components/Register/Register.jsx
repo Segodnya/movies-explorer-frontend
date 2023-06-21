@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import logo from "../../images/logo.svg";
-import "../../blocks/auth/auth.css";
 import "./Register.css";
 
 const Register = () => {
