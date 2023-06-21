@@ -59,9 +59,10 @@
 @media screen and (width < 768px) {
   .techs {
     background-color: #202020;
+    width: 94%;
   }
   .techs__title {
-    padding: 54px 0 24px;
+    padding: 60px 0 24px;
     font-size: 30px;
     line-height: 36px;
   }

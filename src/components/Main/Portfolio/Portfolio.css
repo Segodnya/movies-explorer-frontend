@@ -44,6 +44,9 @@
 }
 
 @media screen and (width < 1024px) {
+  .portfolio {
+    gap: 28px;
+  }
   .portfolio__link {
     font-size: 28px;
     line-height: 179%;
@@ -55,7 +58,7 @@
 
 @media screen and (width < 768px) {
   .portfolio {
-    gap: 40px;
+    gap: 20px;
   }
   .portfolio__title {
     font-size: 14px;

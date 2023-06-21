@@ -5,7 +5,7 @@ import photo from "../../../images/student-photo.png";
 
 const AboutMe = () => {
   return (
-    <section className="section" id="about-me">
+    <section className="section about-me" id="about-me">
       <h2 className="title-outlined">Студент</h2>
       <div className="about-me__content">
         <article className="about-me__article">

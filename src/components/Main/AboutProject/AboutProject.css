@@ -73,8 +73,11 @@
 @media screen and (width < 768px) {
   .about-project__paragraphs {
     flex-direction: column;
-    padding: 60px 0;
-    gap: 56px;
+    padding: 60px 0 57px;
+    gap: 53px;
+  }
+  .about-project__article {
+    gap: 19px;
   }
   .about-prject__article-title {
     font-size: 18px;
@@ -86,5 +89,12 @@
   }
   .digram {
     font-size: 11px;
+    gap: 9px;
+  }
+  .diagram__row .diagram__col:nth-child(1) {
+    flex-basis: 35%;
+  }
+  .diagram__row .diagram__col:nth-child(2) {
+    flex-basis: 65%;
   }
 }

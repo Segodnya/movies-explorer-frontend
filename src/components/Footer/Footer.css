@@ -42,9 +42,15 @@
   color: #ffffff;
 }
 
+@media screen and (width < 1024px) {
+  .footer {
+    gap: 20px;
+  }
+}
+
 @media screen and (width < 768px) {
   .footer {
-    gap: 30px;
+    gap: 27px;
   }
   .footer__description {
     font-size: 12px;

@@ -17,6 +17,10 @@
 }
 
 @media screen and (width < 768px) {
+  .header {
+    width: 97.5%;
+    padding: 5px 16px 29px;
+  }
   .header__menu-button {
     display: flex;
     justify-content: center;

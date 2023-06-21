@@ -80,6 +80,12 @@
 }
 
 @media screen and (width < 768px) {
+  .about-me {
+    width: 98%;
+  }
+  .about-me__content {
+    gap: 70px;
+  }
   .about-me__article {
     flex-direction: column-reverse;
     padding: 60px 0 0;
@@ -100,12 +106,14 @@
     font-size: 11px;
     line-height: 145%;
   }
-  .about-me__link {
-    margin: 0 auto;
-  }
   .about-me__photo {
     margin: 0 auto;
     width: 292px;
     height: 352px;
+  }
+  .about-me__paragraph {
+    max-width: 364px;
+    font-size: 11px;
+    line-height: 145%;
   }
 }
