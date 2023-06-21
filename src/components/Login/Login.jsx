@@ -17,7 +17,7 @@ const Login = () => {
     <main className="auth">
       <div className="auth__container">
         <Link to="/" className="logo logo_auth">
-          <img src={logo} alt="site logo" />
+          <img src={logo} alt="логотип сайта" />
         </Link>
         <h1 className="auth__title">Рады видеть!</h1>
         <form

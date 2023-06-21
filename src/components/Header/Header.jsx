@@ -15,13 +15,17 @@ function Header({ isLogged }) {
   return (
     <header className="header">
       <a href="/" className="link logo">
-        <img src={logo} alt="Logo" />
+        <img src={logo} alt="логотип сайта" />
       </a>
 
       {isLogged ? (
         <>
           <button onClick={handleMenuClick} className="header__menu-button">
-            <img className="header__menu-icon" src={menu} alt="menu button" />
+            <img
+              className="header__menu-icon"
+              src={menu}
+              alt="кнопка вызова меню"
+            />
           </button>
           <Navigation
             isMenuOpen={isMenuOpen}

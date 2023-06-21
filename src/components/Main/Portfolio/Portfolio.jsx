@@ -17,7 +17,7 @@ const Portfolio = () => {
             Статичный сайт
             <img
               src={arrow}
-              alt="navigation arrow"
+              alt="кнопка-ссылка в виде стрелки"
               className="portfolio__icon"
             />
           </a>
@@ -32,7 +32,7 @@ const Portfolio = () => {
             Адаптивный сайт
             <img
               src={arrow}
-              alt="navigation arrow"
+              alt="кнопка-ссылка в виде стрелки"
               className="portfolio__icon"
             />
           </a>
@@ -47,7 +47,7 @@ const Portfolio = () => {
             Одностраничное приложение
             <img
               src={arrow}
-              alt="navigation arrow"
+              alt="кнопка-ссылка в виде стрелки"
               className="portfolio__icon"
             />
           </a>

@@ -4,7 +4,7 @@ import "./MoviesCard.css";
 const MoviesCard = ({ title, cover, duration, isOwn }) => {
   return (
     <article className="movie-card">
-      <img className="movie-card__image" src={cover} alt="movie" />
+      <img className="movie-card__image" src={cover} alt="обложка фильма" />
       <div className="movie-card__description">
         <h3 className="movie-card__title">{title}</h3>
         {isOwn ? (

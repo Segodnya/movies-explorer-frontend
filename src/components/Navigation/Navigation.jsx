@@ -51,7 +51,11 @@ function Navigation({ isMenuOpen, handleMenuClick }) {
         } navigation__link_cornered`}
       >
         Аккаунт
-        <img className="navigation__pic" src={account} alt="account pic" />
+        <img
+          className="navigation__pic"
+          src={account}
+          alt="иконка головы человека"
+        />
       </a>
     </nav>
   );

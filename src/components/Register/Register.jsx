@@ -15,7 +15,7 @@ const Register = () => {
     <main className="auth">
       <div className="auth__container">
         <Link to="/" className="logo logo_auth">
-          <img src={logo} alt="site logo" />
+          <img src={logo} alt="логотип сайта" />
         </Link>
         <h1 className="auth__title">Добро пожаловать!</h1>
         <form
