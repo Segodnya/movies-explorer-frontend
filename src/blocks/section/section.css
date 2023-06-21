@@ -4,7 +4,7 @@
 }
 @media screen and (width < 1024px) {
   .section {
-    width: 100%;
+    width: 89%;
     padding: 90px 0;
   }
 }

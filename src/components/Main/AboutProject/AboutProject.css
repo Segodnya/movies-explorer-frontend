@@ -6,7 +6,7 @@
 .about-project__article {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 22px;
   max-width: 550px;
 }
 .about-prject__article-title {
@@ -62,7 +62,7 @@
 @media screen and (width < 1024px) {
   .about-project__paragraphs {
     padding: 70px 0 93px;
-    gap: 30px;
+    gap: 36px;
   }
   .about-prject__article-text {
     font-size: 12px;

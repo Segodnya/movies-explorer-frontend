@@ -48,7 +48,7 @@
   height: 26px;
 }
 
-@media screen and (width < 769px) {
+@media screen and (width < 768px) {
   .navigation {
     display: flex;
     justify-content: flex-start;
