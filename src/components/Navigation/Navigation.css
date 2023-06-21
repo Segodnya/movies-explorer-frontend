@@ -89,7 +89,7 @@
     height: 0;
   }
   .navigation__close {
-    margin: 22px;
+    margin: 22px 28px;
     align-self: flex-end;
     display: block;
     cursor: pointer;
@@ -102,10 +102,14 @@
     object-fit: cover;
   }
   .navigation_open {
-    height: 100vh;
+    min-height: 100vh;
     opacity: 1;
   }
+  .navigation__links {
+    margin: 71px 0 0;
+  }
   .navigation__link {
+    margin-bottom: 18px;
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;

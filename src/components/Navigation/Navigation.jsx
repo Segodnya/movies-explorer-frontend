@@ -11,7 +11,11 @@ function Navigation({ isMenuOpen, handleMenuClick }) {
     >
       <button onClick={handleMenuClick} className="navigation__close"></button>
 
-      <div className={`${isMenuOpen ? "" : "navigation__links_centered"}`}>
+      <div
+        className={`navigation__links ${
+          isMenuOpen ? "" : "navigation__links_centered"
+        }`}
+      >
         {isMenuOpen && (
           <a
             href="/"
