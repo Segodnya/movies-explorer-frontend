@@ -17,6 +17,7 @@
   color: #8b8b8b;
 }
 .search-form__button {
+  border: none;
   width: 80px;
   height: 34px;
   background-color: #4285f4;
