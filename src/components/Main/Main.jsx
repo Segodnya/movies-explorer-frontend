@@ -13,10 +13,12 @@ const Main = ({ isLogged }) => {
   return (
     <>
       <Header isLogged={isLogged} />
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
+      <main>
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+      </main>
       <Footer />
     </>
   );

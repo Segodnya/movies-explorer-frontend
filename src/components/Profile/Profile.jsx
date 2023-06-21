@@ -8,7 +8,7 @@ const Profile = ({ isLogged }) => {
   return (
     <>
       <Header isLogged={isLogged} />
-      <section className="profile">
+      <main className="profile">
         <h1 className="profile__title">Привет, Виталий!</h1>
         <div className="profile__form">
           <div className="profile__row">
@@ -28,7 +28,7 @@ const Profile = ({ isLogged }) => {
             Выйти из аккаунта
           </button>
         </div>
-      </section>
+      </main>
     </>
   );
 };

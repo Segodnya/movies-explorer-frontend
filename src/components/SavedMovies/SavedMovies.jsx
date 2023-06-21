@@ -33,12 +33,12 @@ const SavedMovies = ({ isLogged }) => {
   return (
     <>
       <Header isLogged={isLogged} />
-      <section className="movies">
+      <main className="movies" aria-label="Список сохраненных фильмов">
         <SearchForm />
         <FilterCheckbox />
         <MoviesCardList movies={savedMovies} />
         <button className="movies__button">Еще</button>
-      </section>
+      </main>
       <Footer />
     </>
   );

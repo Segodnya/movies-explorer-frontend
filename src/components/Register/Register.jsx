@@ -13,12 +13,12 @@ const Register = () => {
   };
 
   return (
-    <div className="auth">
+    <main className="auth">
       <div className="auth__container">
         <Link to="/" className="auth__logo">
           <img src={logo} alt="site logo" />
         </Link>
-        <h2 className="auth__title">Добро пожаловать!</h2>
+        <h1 className="auth__title">Добро пожаловать!</h1>
         <form
           name="register"
           className="auth__form"
@@ -100,7 +100,7 @@ const Register = () => {
           </Link>
         </p>
       </div>
-    </div>
+    </main>
   );
 };
 
