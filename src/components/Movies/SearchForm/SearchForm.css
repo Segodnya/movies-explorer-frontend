@@ -18,7 +18,7 @@
 }
 .search-form__button {
   border: none;
-  width: 80px;
+  width: 106px;
   height: 34px;
   background-color: #4285f4;
   border-radius: 20px;
@@ -36,7 +36,8 @@
 
 @media screen and (width < 768px) {
   .search-form {
-    padding: 84px 0 9px;
+    padding: 70px 0 9px;
+    width: 97%;
   }
   .search-form__input {
     font-size: 18px;

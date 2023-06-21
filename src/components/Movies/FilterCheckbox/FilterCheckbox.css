@@ -37,7 +37,7 @@
 
 .filter-checkbox__slider:before {
   position: absolute;
-  content: '';
+  content: "";
   height: 8px;
   width: 8px;
   left: 6px;
@@ -87,7 +87,7 @@
 
 @media screen and (width < 768px) {
   .filter-checkbox {
-    padding: 40px 0 50px;
+    padding: 30px 0 40px;
     justify-content: center;
     gap: 14px;
   }
