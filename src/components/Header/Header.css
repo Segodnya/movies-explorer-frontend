@@ -17,7 +17,7 @@
   display: none;
 }
 
-@media screen and (width < 768px) {
+@media screen and (width < 769px) {
   .header {
     width: 97.5%;
     padding: 5px 16px 29px;

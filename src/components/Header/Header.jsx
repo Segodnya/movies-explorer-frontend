@@ -29,16 +29,16 @@ function Header({ isLogged }) {
           />
         </>
       ) : (
-        <nav className={`navigation`}>
+        <nav className={`navigation-alwayson`}>
           <Link
             to="/signup"
-            className="link navigation__link navigation__link_type_normal"
+            className="link navigation-alwayson__link navigation-alwayson__link_type_normal"
           >
             Регистрация
           </Link>
           <Link
             to="/signin"
-            className="link navigation__link navigation__link_type_highlighted"
+            className="link navigation-alwayson__link navigation-alwayson__link_type_highlighted"
           >
             Войти
           </Link>
