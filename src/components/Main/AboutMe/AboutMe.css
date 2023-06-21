@@ -81,7 +81,8 @@
 
 @media screen and (width < 768px) {
   .about-me {
-    width: 98%;
+    width: 97%;
+    padding: 70px 0;
   }
   .about-me__content {
     gap: 70px;

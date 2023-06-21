@@ -4,12 +4,13 @@
 }
 @media screen and (width < 1024px) {
   .section {
-    width: 89%;
-    padding: 90px 0;
+    width: 100%;
+    padding: 90px 40px;
   }
 }
 @media screen and (width < 768px) {
   .section {
+    margin: 0 auto;
     width: 95%;
     padding: 70px 0;
   }

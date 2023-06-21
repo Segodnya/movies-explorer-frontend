@@ -7,7 +7,7 @@ const Promo = () => {
       <h1 className="promo__title">
         Учебный проект студента факультета Веб-разработки.
       </h1>
-      <ul className="list">
+      <ul className="list promo__list">
         <li>
           <a className="link promo__link" href="#about-project">
             О проекте

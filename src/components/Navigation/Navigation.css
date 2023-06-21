@@ -88,6 +88,9 @@
     z-index: 1;
     height: 0;
   }
+  .navigation-alwayson {
+    gap: 15px;
+  }
   .navigation__close {
     margin: 22px 28px;
     align-self: flex-end;
@@ -119,5 +122,13 @@
     margin: 0 0 4px;
     border-bottom: 2px solid #fff;
     background: transparent;
+  }
+  .navigation-alwayson__link {
+    min-height: 26px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+  .navigation-alwayson__link_type_highlighted {
+    width: 54px;
   }
 }

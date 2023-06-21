@@ -6,7 +6,7 @@
 .about-project__article {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 27px;
   max-width: 550px;
 }
 .about-project__article-title {
@@ -63,6 +63,9 @@
   .about-project__paragraphs {
     padding: 70px 0 93px;
     gap: 36px;
+  }
+  .about-project__article {
+    gap: 21px;
   }
   .about-project__article-text {
     font-size: 12px;

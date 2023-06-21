@@ -12,8 +12,8 @@
 
 @media screen and (width < 769px) {
   .header {
-    width: 97.5%;
-    padding: 5px 16px 29px;
+    width: 98%;
+    padding: 8px 16px 32px;
   }
   .header__menu-button {
     display: flex;

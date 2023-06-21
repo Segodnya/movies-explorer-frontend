@@ -40,7 +40,7 @@
 
 @media screen and (width < 1024px) {
   .promo {
-    width: 97%;
+    width: 100%;
     padding: 350px 0 30px;
     gap: 315px;
   }
@@ -61,6 +61,9 @@
     max-width: 292px;
     font-size: 29px;
     line-height: 128%;
+  }
+  .promo__list {
+    gap: 6px;
   }
   .promo__link {
     width: 82px;
