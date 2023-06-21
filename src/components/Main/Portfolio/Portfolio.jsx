@@ -1,6 +1,5 @@
 import React from "react";
 import "./Portfolio.css";
-import arrow from "../../../images/nav-arrow.svg";
 
 const Portfolio = () => {
   return (
@@ -15,11 +14,6 @@ const Portfolio = () => {
             rel="noreferrer"
           >
             Статичный сайт
-            <img
-              src={arrow}
-              alt="кнопка-ссылка в виде стрелки"
-              className="portfolio__icon"
-            />
           </a>
         </li>
         <li className="portfolio__item">
@@ -30,11 +24,6 @@ const Portfolio = () => {
             rel="noreferrer"
           >
             Адаптивный сайт
-            <img
-              src={arrow}
-              alt="кнопка-ссылка в виде стрелки"
-              className="portfolio__icon"
-            />
           </a>
         </li>
         <li className="portfolio__item">
@@ -45,11 +34,6 @@ const Portfolio = () => {
             rel="noreferrer"
           >
             Одностраничное приложение
-            <img
-              src={arrow}
-              alt="кнопка-ссылка в виде стрелки"
-              className="portfolio__icon"
-            />
           </a>
         </li>
       </ul>

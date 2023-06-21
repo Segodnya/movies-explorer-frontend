@@ -8,9 +8,15 @@ const MoviesCard = ({ title, cover, duration, isOwn }) => {
       <div className="movie-card__description">
         <h3 className="movie-card__title">{title}</h3>
         {isOwn ? (
-          <button className="movie-card__button movie-card__button_type_delete"></button>
+          <button
+            className="movie-card__button movie-card__button_type_delete"
+            type="button"
+          ></button>
         ) : (
-          <button className="movie-card__button movie-card__button_type_like"></button>
+          <button
+            className="movie-card__button movie-card__button_type_like"
+            type="button"
+          ></button>
         )}
       </div>
       <p className="movie-card__duration">{duration}</p>

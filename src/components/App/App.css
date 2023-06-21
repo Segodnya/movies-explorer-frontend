@@ -1,7 +1,12 @@
 .app {
+  padding: 10px;
+  width: calc(100%-20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   background-color: #202020;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   color: #fff;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -9,12 +14,4 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-}
-
-.app__wrapper {
-  padding: 10px;
-  width: calc(100%-20px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }

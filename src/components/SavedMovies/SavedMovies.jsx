@@ -1,8 +1,8 @@
 import React from "react";
 import "./SavedMovies.css";
-import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
-import SearchForm from "../Movies/SearchForm/SearchForm";
-import FilterCheckbox from "../Movies/FilterCheckbox/FilterCheckbox";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import cover from "../../images/movie.png";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -37,7 +37,9 @@ const SavedMovies = ({ isLogged }) => {
         <SearchForm />
         <FilterCheckbox />
         <MoviesCardList movies={savedMovies} />
-        <button className="movies__button">Еще</button>
+        <button className="movies__button" type="button">
+          Еще
+        </button>
       </main>
       <Footer />
     </>

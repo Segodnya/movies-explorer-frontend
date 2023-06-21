@@ -76,6 +76,10 @@
   line-height: 138%;
   color: #ffffff;
 }
+.filter-checkbox__text:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 @media screen and (width < 1024px) {
   .filter-checkbox {

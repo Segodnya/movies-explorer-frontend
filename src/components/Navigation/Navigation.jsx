@@ -9,7 +9,11 @@ function Navigation({ isMenuOpen, handleMenuClick }) {
         isMenuOpen ? "navigation_open" : ""
       } `}
     >
-      <button onClick={handleMenuClick} className="navigation__close"></button>
+      <button
+        onClick={handleMenuClick}
+        className="navigation__close"
+        type="button"
+      ></button>
 
       <div
         className={`navigation__links ${

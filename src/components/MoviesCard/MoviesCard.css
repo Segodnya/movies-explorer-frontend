@@ -35,10 +35,10 @@
   height: 24px;
 }
 .movie-card__button_type_like {
-  background-image: url(../../../images/like-white.svg);
+  background-image: url(../../images/like-white.svg);
 }
 .movie-card__button_type_delete {
-  background-image: url(../../../images/delete.svg);
+  background-image: url(../../images/delete.svg);
 }
 .movie-card__duration {
   margin: 6px 0 0 0;

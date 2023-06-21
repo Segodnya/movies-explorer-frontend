@@ -26,21 +26,15 @@
   border-bottom: none;
 }
 .portfolio__link {
+  width: 100%;
   font-weight: 400;
   font-size: 30px;
   line-height: 167%;
   letter-spacing: -0.04em;
   color: #ffffff;
-}
-.portfolio__icon {
-  position: absolute;
-  right: 4px;
-  top: 29px;
-  width: 18px;
-  height: 38px;
-  display: block;
-  object-fit: contain;
-  object-position: center;
+  background-image: url(../../../images/nav-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 @media screen and (width < 1024px) {
@@ -70,10 +64,5 @@
   .portfolio__link {
     font-size: 18px;
     line-height: 156%;
-  }
-  .portfolio__icon {
-    top: 20px;
-    width: 18px;
-    height: 28px;
   }
 }

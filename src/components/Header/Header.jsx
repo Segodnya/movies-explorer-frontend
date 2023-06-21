@@ -20,7 +20,11 @@ function Header({ isLogged }) {
 
       {isLogged ? (
         <>
-          <button onClick={handleMenuClick} className="header__menu-button">
+          <button
+            onClick={handleMenuClick}
+            className="header__menu-button"
+            type="button"
+          >
             <img
               className="header__menu-icon"
               src={menu}

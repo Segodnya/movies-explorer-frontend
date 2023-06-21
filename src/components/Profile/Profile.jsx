@@ -21,10 +21,16 @@ const Profile = ({ isLogged }) => {
           </div>
         </div>
         <div className="profile__buttons">
-          <button className="profile__button profile__button_color_white">
+          <button
+            className="profile__button profile__button_color_white"
+            type="button"
+          >
             Редактировать
           </button>
-          <button className="profile__button profile__button_color_red">
+          <button
+            className="profile__button profile__button_color_red"
+            type="button"
+          >
             Выйти из аккаунта
           </button>
         </div>
