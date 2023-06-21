@@ -15,8 +15,8 @@ const Register = () => {
   return (
     <div className="auth">
       <div className="auth__container">
-        <Link to="/">
-          <img className="auth__logo" src={logo} alt="site logo" />
+        <Link to="/" className="auth__logo">
+          <img src={logo} alt="site logo" />
         </Link>
         <h2 className="auth__title">Добро пожаловать!</h2>
         <form
