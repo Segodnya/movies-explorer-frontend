@@ -19,6 +19,10 @@
   line-height: 15px;
   color: #fff;
   cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+.movies__button:hover {
+  background-color: #4285f4;
 }
 
 @media screen and (width < 768px) {
