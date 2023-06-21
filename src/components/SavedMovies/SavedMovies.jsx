@@ -7,7 +7,8 @@ import cover from "../../images/movie.png";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = () => {
+const SavedMovies = ({ isLogged }) => {
+  isLogged = true;
   let savedMovies = [
     {
       title: "Gimme Danger: История Игги и The Stooges",
@@ -31,7 +32,7 @@ const SavedMovies = () => {
 
   return (
     <>
-      <Header />
+      <Header isLogged={isLogged} />
       <section className="movies">
         <SearchForm />
         <FilterCheckbox />

@@ -2,10 +2,12 @@ import React from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 
-const Profile = () => {
+const Profile = ({ isLogged }) => {
+  isLogged = true;
+
   return (
     <>
-      <Header />
+      <Header isLogged={isLogged} />
       <section className="profile">
         <h1 className="profile__title">Привет, Виталий!</h1>
         <div className="profile__form">

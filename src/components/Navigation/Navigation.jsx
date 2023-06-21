@@ -2,15 +2,15 @@ import React from "react";
 import "./Navigation.css";
 import account from "../../images/account.svg";
 
-function Navigation({ isLoggedIn, isMenuOpen, handleMenuClick }) {
+function Navigation({ isLogged, isMenuOpen, handleMenuClick }) {
   return (
     <nav
-      className={`navigation ${isLoggedIn ? "navigation_centered" : ""} ${
+      className={`navigation ${isLogged ? "navigation_centered" : ""} ${
         isMenuOpen ? "navigation_open" : ""
       } `}
     >
       <button onClick={handleMenuClick} className="navigation__close"></button>
-      {!isLoggedIn && (
+      {!isLogged && (
         <a
           href="/signup"
           className="link navigation__link navigation__link_type_normal"
@@ -18,7 +18,7 @@ function Navigation({ isLoggedIn, isMenuOpen, handleMenuClick }) {
           Регистрация
         </a>
       )}
-      {!isLoggedIn && (
+      {!isLogged && (
         <a
           href="/signin"
           className={`link navigation__link navigation__link_type_highlighted ${
@@ -28,7 +28,7 @@ function Navigation({ isLoggedIn, isMenuOpen, handleMenuClick }) {
           Войти
         </a>
       )}
-      {isLoggedIn && (
+      {isLogged && (
         <div className={`${isMenuOpen ? "" : "navigation__links_centered"}`}>
           {isMenuOpen && (
             <a
@@ -59,7 +59,7 @@ function Navigation({ isLoggedIn, isMenuOpen, handleMenuClick }) {
         </div>
       )}
 
-      {isLoggedIn && (
+      {isLogged && (
         <a
           href="/profile"
           className={`link navigation__link  navigation__link_type_normal ${

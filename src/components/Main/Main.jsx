@@ -7,10 +7,12 @@ import AboutMe from "./AboutMe/AboutMe";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const Main = () => {
+const Main = ({ isLogged }) => {
+  isLogged = false;
+
   return (
     <>
-      <Header />
+      <Header isLogged={isLogged} />
       <Promo />
       <AboutProject />
       <Techs />

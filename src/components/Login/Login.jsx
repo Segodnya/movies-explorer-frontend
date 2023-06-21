@@ -4,20 +4,21 @@ import useForm from "../../hooks/useForm";
 import logo from "../../images/logo.svg";
 import "./Login.css";
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = () => {
   const { values, errors, handleChange, isFormValid } = useForm();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoggedIn(true);
-    navigate("/");
+    navigate("/movies");
   };
 
   return (
     <div className="auth">
       <div className="auth__container">
-        <img className="auth__logo" src={logo} alt="site logo" />
+        <Link to="/">
+          <img className="auth__logo" src={logo} alt="site logo" />
+        </Link>
         <h2 className="auth__title">Рады видеть!</h2>
         <form
           name="login"
