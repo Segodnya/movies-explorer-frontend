@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 270px);
+  min-height: calc(100vh - 56px);
   width: 400px;
 }
 .auth__container {
@@ -75,7 +75,6 @@
 
 @media screen and (width< 768px) {
   .auth {
-    min-height: calc(100vh - 360px);
     width: 260px;
   }
   .auth__container {

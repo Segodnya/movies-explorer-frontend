@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 270px);
+  height: calc(100vh - 20px);
 }
 .not-found__title {
   margin: 0;
@@ -27,9 +27,6 @@
 }
 
 @media screen and (width < 768px) {
-  .not-found {
-    height: calc(100vh - 360px);
-  }
   .not-found__title {
     font-size: 80px;
     line-height: 97px;

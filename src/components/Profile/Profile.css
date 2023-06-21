@@ -1,5 +1,5 @@
 .profile {
-  height: calc(100vh - 410px);
+  height: calc(100vh - 234px);
   width: 410px;
   padding: 70px 0;
   display: flex;
@@ -62,7 +62,7 @@
 
 @media screen and (width < 768px) {
   .profile {
-    height: calc(100vh - 430px);
+    height: calc(100vh - 170px);
     padding: 70px 0 0;
     width: 300px;
     justify-content: space-between;
