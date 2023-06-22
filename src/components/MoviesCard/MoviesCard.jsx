@@ -6,7 +6,7 @@ const MoviesCard = ({ title, cover, duration, isOwn }) => {
     <article className="movie-card">
       <img className="movie-card__image" src={cover} alt="обложка фильма" />
       <div className="movie-card__description">
-        <h3 className="movie-card__title">{title}</h3>
+        <h2 className="movie-card__title">{title}</h2>
         {isOwn ? (
           <button
             className="movie-card__button movie-card__button_type_delete"
