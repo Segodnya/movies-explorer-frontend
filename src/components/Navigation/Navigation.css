@@ -1,0 +1,134 @@
+.navigation {
+  gap: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.navigation-alwayson {
+  gap: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.navigation_centered {
+  width: calc(50% + 120px);
+  justify-content: space-between;
+}
+.navigation__close {
+  display: none;
+}
+.navigation__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 32px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+}
+.navigation-alwayson__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 32px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+}
+.navigation__link_cornered {
+  justify-self: flex-end;
+}
+.navigation__link_type_normal {
+  color: #fff;
+}
+.navigation__link_type_highlighted {
+  width: 76px;
+  border-radius: 3px;
+  background: #3ddc84;
+  color: #000000;
+}
+.navigation-alwayson__link_type_normal {
+  color: #fff;
+}
+.navigation-alwayson__link_type_highlighted {
+  width: 76px;
+  border-radius: 3px;
+  background: #3ddc84;
+  color: #000000;
+}
+.navigation__link_type_highlighted-open {
+  opacity: 1;
+}
+.navigation__links_centered {
+  display: flex;
+  gap: 16px;
+  align-self: flex-start;
+}
+.navigation__pic {
+  margin: 0 0 0 7px;
+  display: block;
+  object-fit: cover;
+  width: 26px;
+  height: 26px;
+}
+
+@media screen and (width < 769px) {
+  .navigation {
+    display: flex;
+    justify-content: flex-start;
+    gap: 14px;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 520px;
+    background-color: #202020;
+    opacity: 0;
+    z-index: 1;
+    height: 0;
+  }
+  .navigation-alwayson {
+    gap: 15px;
+  }
+  .navigation__close {
+    margin: 22px 28px;
+    align-self: flex-end;
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 26px;
+    height: 26px;
+    background-image: url(../../images//close.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    object-fit: cover;
+  }
+  .navigation_open {
+    min-height: 100vh;
+    opacity: 1;
+  }
+  .navigation__links {
+    margin: 71px 0 0;
+  }
+  .navigation__link {
+    margin-bottom: 18px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #ffffff;
+  }
+  .navigation__link_type_highlighted {
+    margin: 0 0 4px;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+  }
+  .navigation-alwayson__link {
+    min-height: 26px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+  .navigation-alwayson__link_type_highlighted {
+    width: 54px;
+  }
+}

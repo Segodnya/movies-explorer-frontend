@@ -1,0 +1,31 @@
+.header {
+  width: 94.5%;
+  max-width: 1140px;
+  padding: 8px 16px 38px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__menu-button {
+  display: none;
+}
+
+@media screen and (width < 769px) {
+  .header {
+    width: 98%;
+    padding: 8px 16px 32px;
+  }
+  .header__menu-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    width: 44px;
+    min-height: 44px;
+    background: transparent;
+  }
+  .header__menu-icon {
+    display: block;
+  }
+}

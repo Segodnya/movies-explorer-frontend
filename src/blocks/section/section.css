@@ -1,0 +1,17 @@
+.section {
+  box-sizing: border-box;
+  padding: 110px 0;
+}
+@media screen and (width < 1024px) {
+  .section {
+    width: 100%;
+    padding: 90px 40px;
+  }
+}
+@media screen and (width < 768px) {
+  .section {
+    margin: 0 auto;
+    width: 95%;
+    padding: 70px 0;
+  }
+}
