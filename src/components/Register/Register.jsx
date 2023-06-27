@@ -4,11 +4,12 @@ import useForm from "../../hooks/useForm";
 import logo from "../../images/logo.svg";
 import "./Register.css";
 
-const Register = () => {
+const Register = ({ onRegister }) => {
   const { values, errors, handleChange, isFormValid } = useForm();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onRegister(values.name, values.email, values.password);
   };
 
   return (

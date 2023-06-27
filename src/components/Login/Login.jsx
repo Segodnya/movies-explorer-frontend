@@ -1,16 +1,15 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import logo from "../../images/logo.svg";
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ onAuthorize }) => {
   const { values, errors, handleChange, isFormValid } = useForm();
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/movies");
+    onAuthorize(values["login-email"], values["login-password"]);
   };
 
   return (
