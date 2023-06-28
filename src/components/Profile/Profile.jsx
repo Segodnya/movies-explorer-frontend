@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { patchUserInfo } from "../../utils/api/main";
+import { patchUserInfo } from "../../utils/api/mainApi";
 
 const Profile = ({ setCurrentUser, navigate }) => {
   const { name, email, isLoggedIn } = useContext(CurrentUserContext);
