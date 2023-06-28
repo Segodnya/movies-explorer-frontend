@@ -2,22 +2,30 @@ import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-const MoviesCardList = (props) => {
+const MoviesCardList = ({ movies, filterMovies }) => {
   return (
-    <ul className="list movies-card-list">
-      {props.movies.map((movie) => {
-        return (
-          <li>
-            <MoviesCard
-              title={movie.title}
-              cover={movie.cover}
-              duration={movie.duration}
-              isOwn={movie.isOwn}
-            />
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      {movies.length === 0 ? (
+        <div></div>
+      ) : (
+        <ul className="list movies-card-list">
+          {filterMovies(movies).map((movie) => {
+            return (
+              <li>
+                <MoviesCard
+                  title={movie.nameRU}
+                  cover={`https://api.nomoreparties.co${movie.image.url}`}
+                  duration={`${Math.floor(movie.duration / 60)}ч ${
+                    movie.duration % 60
+                  }мин`}
+                  isOwn={movie.isOwn}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </>
   );
 };
 

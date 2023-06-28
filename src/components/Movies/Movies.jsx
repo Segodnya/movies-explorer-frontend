@@ -1,119 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Movies.css";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import cover from "../../images/movie.png";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import { getMovies } from "../../utils/api/moviesApi";
 
 const Movies = ({ isLoggedIn }) => {
-  let initialCards = [
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: false,
-    },
-  ];
+  // Toggle Short Films
+
+  const [toggleState, setToggleState] = useState(false);
+
+  const changeToggleState = () => {
+    setToggleState(!toggleState);
+  };
+
+  // Search Query
+
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState([]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    getAllMovies();
+  };
+
+  const getAllMovies = () => {
+    getMovies().then((data) => {
+      setMovies(data);
+    });
+  };
+
+  const filterMovies = (movies) => {
+    console.log(movies);
+    let filterredMovies;
+    filterredMovies = movies.filter((item) =>
+      item.nameRU.toLowerCase().includes(query.toLowerCase())
+    );
+    if (toggleState) {
+      filterredMovies = filterredMovies.filter((item) => item.duration <= 40);
+    }
+    return filterredMovies;
+  };
 
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
       <main className="movies" aria-label="Список фильмов">
-        <SearchForm />
-        <FilterCheckbox />
-        <MoviesCardList movies={initialCards} />
+        <SearchForm
+          handleSearch={handleSearch}
+          query={query}
+          setQuery={setQuery}
+        />
+        <FilterCheckbox
+          toggleState={toggleState}
+          changeToggleState={changeToggleState}
+        />
+        <MoviesCardList movies={movies} filterMovies={filterMovies} />
         <button className="movies__button" type="button">
           Еще
         </button>
