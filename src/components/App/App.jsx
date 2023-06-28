@@ -15,7 +15,11 @@ import ProtectedRouteElement from "../../utils/ProtectedRouteElement";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // Создайте стейт currentUser в корневом компоненте
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({
+    name: null,
+    email: null,
+    isLoggedIn: !!localStorage.getItem("userId"),
+  });
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -26,8 +30,15 @@ const App = () => {
       auth
         .getContent(jwt)
         .then((res) => {
+          console.log(res);
           if (res) {
             setIsLoggedIn(true);
+            localStorage.setItem("userId", res._id);
+            setCurrentUser((oldState) => ({
+              name: res.name,
+              email: res.email,
+              isLoggedIn: true,
+            }));
           }
           setIsLoading(false);
         })
@@ -60,7 +71,6 @@ const App = () => {
       .authorize(email, password)
       .then((res) => {
         if (res) {
-          console.log(res);
           setIsLoggedIn(true);
           localStorage.setItem("jwt", res.token);
           navigate("/");
@@ -69,13 +79,6 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  // Выход
-  const handleSignOut = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("jwt");
-    navigate("/signin");
   };
 
   return (

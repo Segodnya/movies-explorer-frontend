@@ -42,3 +42,19 @@ export const getContent = async (token) => {
   });
   return handleResponse(res);
 };
+
+export const patchUserInfo = async ({ name, email, token }) => {
+  const res = await fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+    }),
+  });
+  return handleResponse(res);
+};
