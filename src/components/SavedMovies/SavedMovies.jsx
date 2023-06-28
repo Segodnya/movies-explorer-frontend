@@ -7,8 +7,7 @@ import cover from "../../images/movie.png";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = ({ isLogged }) => {
-  isLogged = true;
+const SavedMovies = ({ isLoggedIn }) => {
   let savedMovies = [
     {
       title: "Gimme Danger: История Игги и The Stooges",
@@ -32,7 +31,7 @@ const SavedMovies = ({ isLogged }) => {
 
   return (
     <>
-      <Header isLogged={isLogged} />
+      <Header isLoggedIn={isLoggedIn} />
       <main className="movies" aria-label="Список сохраненных фильмов">
         <SearchForm />
         <FilterCheckbox />

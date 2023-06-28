@@ -7,8 +7,7 @@ import cover from "../../images/movie.png";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const Movies = ({ isLogged }) => {
-  isLogged = true;
+const Movies = ({ isLoggedIn }) => {
   let initialCards = [
     {
       title: "Gimme Danger: История Игги и The Stooges",
@@ -110,7 +109,7 @@ const Movies = ({ isLogged }) => {
 
   return (
     <>
-      <Header isLogged={isLogged} />
+      <Header isLoggedIn={isLoggedIn} />
       <main className="movies" aria-label="Список фильмов">
         <SearchForm />
         <FilterCheckbox />

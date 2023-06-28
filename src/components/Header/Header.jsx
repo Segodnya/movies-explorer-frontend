@@ -5,7 +5,7 @@ import logo from "../../images/logo.svg";
 import menu from "../../images/menu_icon.svg";
 import "./Header.css";
 
-function Header({ isLogged }) {
+function Header({ isLoggedIn }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function handleMenuClick() {
@@ -18,7 +18,7 @@ function Header({ isLogged }) {
         <img src={logo} alt="логотип сайта" />
       </a>
 
-      {isLogged ? (
+      {isLoggedIn ? (
         <>
           <button
             onClick={handleMenuClick}

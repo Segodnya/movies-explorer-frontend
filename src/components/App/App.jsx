@@ -10,11 +10,13 @@ import NotFound from "../NotFound/NotFound";
 import "./App.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import * as auth from "../../utils/auth";
+import ProtectedRouteElement from "../../utils/ProtectedRouteElement";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // Создайте стейт currentUser в корневом компоненте
   const [currentUser, setCurrentUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   // Проверка токена и авторизация пользователя
@@ -26,12 +28,15 @@ const App = () => {
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
-            navigate("/");
           }
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
@@ -46,8 +51,7 @@ const App = () => {
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {});
+      });
   };
 
   // Авторизация пользователя
@@ -56,6 +60,7 @@ const App = () => {
       .authorize(email, password)
       .then((res) => {
         if (res) {
+          console.log(res);
           setIsLoggedIn(true);
           localStorage.setItem("jwt", res.token);
           navigate("/");
@@ -74,29 +79,63 @@ const App = () => {
   };
 
   return (
-    // используйте провайдер объекта контекста:
-    // «оберните» в него всё текущее содержимое корневого компонента.
-    // В качестве значения контекста для провайдера используйте currentUser
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
-        <Routes>
-          <Route path="/" element={<Main isLogged={isLoggedIn} />} />
-          <Route path="/movies" element={<Movies isLogged={isLoggedIn} />} />
-          <Route
-            path="/saved-movies"
-            element={<SavedMovies isLogged={isLoggedIn} />}
-          />
-          <Route path="/profile" element={<Profile isLogged={isLoggedIn} />} />
-          <Route
-            path="/signin"
-            element={<Login onAuthorize={handleAuthorize} />}
-          />
-          <Route
-            path="/signup"
-            element={<Register onRegister={handleRegister} />}
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <Routes>
+            <Route
+              path="/signup"
+              element={<Register onRegister={handleRegister} />}
+            />
+            <Route
+              path="/signin"
+              element={<Login onAuthorize={handleAuthorize} />}
+            />
+
+            <Route
+              path="/"
+              element={
+                <ProtectedRouteElement
+                  isLoggedIn={isLoggedIn}
+                  component={Main}
+                />
+              }
+            />
+            <Route
+              path="/movies"
+              element={
+                <ProtectedRouteElement
+                  isLoggedIn={isLoggedIn}
+                  component={Movies}
+                />
+              }
+            />
+            <Route
+              path="/saved-movies"
+              element={
+                <ProtectedRouteElement
+                  isLoggedIn={isLoggedIn}
+                  component={SavedMovies}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRouteElement
+                  isLoggedIn={isLoggedIn}
+                  component={Profile}
+                  setCurrentUser={setCurrentUser}
+                  navigate={navigate}
+                />
+              }
+            />
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        )}
       </div>
     </CurrentUserContext.Provider>
   );
