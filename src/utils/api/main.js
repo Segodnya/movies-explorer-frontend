@@ -43,7 +43,7 @@ export const getContent = async (token) => {
   return handleResponse(res);
 };
 
-export const patchUserInfo = async ({ name, email, token }) => {
+export const patchUserInfo = async ({ name, token }) => {
   const res = await fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
@@ -53,7 +53,6 @@ export const patchUserInfo = async ({ name, email, token }) => {
     },
     body: JSON.stringify({
       name: name,
-      email: email,
     }),
   });
   return handleResponse(res);

@@ -9,7 +9,7 @@ import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
 import "./App.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import * as auth from "../../utils/auth";
+import * as auth from "../../utils/api/main";
 import ProtectedRouteElement from "../../utils/ProtectedRouteElement";
 
 const App = () => {

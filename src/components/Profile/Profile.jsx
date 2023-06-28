@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { patchUserInfo } from "../../utils/api/main";
 
 const Profile = ({ setCurrentUser, navigate }) => {
   const { name, email, isLoggedIn } = useContext(CurrentUserContext);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newName, setNewName] = useState(name);
+
+  useEffect(() => {
+    setNewName(newName);
+  }, [newName]);
 
   // Выход
   const handleSignOut = () => {
@@ -26,7 +33,15 @@ const Profile = ({ setCurrentUser, navigate }) => {
         <div className="profile__form">
           <div className="profile__row">
             <p className="profile__text">Имя</p>
-            <p className="profile__text">{name}</p>
+            {isEditing ? (
+              <input
+                type="text"
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+              />
+            ) : (
+              <p className="profile__text">{name}</p>
+            )}
           </div>
           <div className="profile__row">
             <p className="profile__text">E-mail</p>
@@ -34,12 +49,29 @@ const Profile = ({ setCurrentUser, navigate }) => {
           </div>
         </div>
         <div className="profile__buttons">
-          <button
-            className="profile__button profile__button_color_white"
-            type="button"
-          >
-            Редактировать
-          </button>
+          {isEditing ? (
+            <button
+              className="profile__button profile__button_color_white"
+              type="button"
+              onClick={() => {
+                patchUserInfo({
+                  name: newName,
+                  token: localStorage.getItem("jwt"),
+                });
+                setIsEditing(false);
+              }}
+            >
+              Сохранить
+            </button>
+          ) : (
+            <button
+              className="profile__button profile__button_color_white"
+              type="button"
+              onClick={() => setIsEditing(true)}
+            >
+              Редактировать
+            </button>
+          )}
           <button
             className="profile__button profile__button_color_red"
             type="button"
