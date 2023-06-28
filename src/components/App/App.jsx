@@ -9,7 +9,7 @@ import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
 import "./App.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import * as auth from "../../utils/api/main";
+import * as api from "../../utils/api/main";
 import ProtectedRouteElement from "../../utils/ProtectedRouteElement";
 
 const App = () => {
@@ -27,7 +27,7 @@ const App = () => {
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      auth
+      api
         .getContent(jwt)
         .then((res) => {
           console.log(res);
@@ -53,7 +53,7 @@ const App = () => {
 
   // Регистрация пользователя
   const handleRegister = (name, email, password) => {
-    auth
+    api
       .register(name, email, password)
       .then((res) => {
         if (res) {
@@ -67,7 +67,7 @@ const App = () => {
 
   // Авторизация пользователя
   const handleAuthorize = (email, password) => {
-    auth
+    api
       .authorize(email, password)
       .then((res) => {
         if (res) {

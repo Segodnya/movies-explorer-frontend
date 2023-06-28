@@ -57,3 +57,38 @@ export const patchUserInfo = async ({ name, token }) => {
   });
   return handleResponse(res);
 };
+
+export const saveMovie = async ({ movieData, token }) => {
+  const res = await fetch(`${BASE_URL}/movies`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(movieData),
+  });
+  return handleResponse(res);
+};
+
+export const getSavedMovies = async (token) => {
+  const res = await fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return handleResponse(res);
+};
+
+export const deleteMovie = async ({ id, token }) => {
+  const res = await fetch(`${BASE_URL}/movies/${id}`, {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return handleResponse(res);
+};
