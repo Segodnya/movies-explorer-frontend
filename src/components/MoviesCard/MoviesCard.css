@@ -37,6 +37,9 @@
 .movie-card__button_type_like {
   background-image: url(../../images/like-white.svg);
 }
+.movie-card__button_type_dislike {
+  background-image: url(../../images/like-red.svg);
+}
 .movie-card__button_type_delete {
   background-image: url(../../images/delete.svg);
 }

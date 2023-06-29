@@ -59,6 +59,7 @@ export const patchUserInfo = async ({ name }) => {
 };
 
 export const saveMovie = async ({ movieData }) => {
+  console.log(movieData);
   const res = await fetch(`${BASE_URL}/movies`, {
     method: "POST",
     headers: {

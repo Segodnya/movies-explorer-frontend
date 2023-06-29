@@ -28,6 +28,7 @@ const Movies = ({ isLoggedIn }) => {
 
   const getAllMovies = () => {
     getMovies().then((data) => {
+      data.map((x) => (x.isLiked = false));
       setMovies(data);
     });
   };

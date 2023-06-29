@@ -13,13 +13,14 @@ const MoviesCardList = ({ movies, filterMovies }) => {
             return (
               <li>
                 <MoviesCard
+                  movie={movie}
                   title={movie.nameRU}
                   cover={`https://api.nomoreparties.co${movie.image.url}`}
                   duration={`${Math.floor(movie.duration / 60)}ч ${
                     movie.duration % 60
                   }мин`}
                   trailerLink={movie.trailerLink}
-                  isOwn={movie.isOwn}
+                  isLiked={movie.isLiked}
                 />
               </li>
             );
