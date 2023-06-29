@@ -1,10 +1,13 @@
 import React from "react";
 import "./MoviesCard.css";
+import { Link } from "react-router-dom";
 
-const MoviesCard = ({ title, cover, duration, isOwn }) => {
+const MoviesCard = ({ title, cover, duration, isOwn, trailerLink }) => {
   return (
     <article className="movie-card">
-      <img className="movie-card__image" src={cover} alt="обложка фильма" />
+      <Link to={trailerLink} target="_blank" rel="noopener noreferrer">
+        <img className="movie-card__image" src={cover} alt="обложка фильма" />
+      </Link>
       <div className="movie-card__description">
         <h2 className="movie-card__title">{title}</h2>
         {isOwn ? (
