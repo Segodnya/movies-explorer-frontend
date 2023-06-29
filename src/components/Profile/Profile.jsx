@@ -56,7 +56,6 @@ const Profile = ({ setCurrentUser, navigate }) => {
               onClick={() => {
                 patchUserInfo({
                   name: newName,
-                  token: localStorage.getItem("jwt"),
                 });
                 setIsEditing(false);
               }}

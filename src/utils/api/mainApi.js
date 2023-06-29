@@ -43,13 +43,13 @@ export const getContent = async (token) => {
   return handleResponse(res);
 };
 
-export const patchUserInfo = async ({ name, token }) => {
+export const patchUserInfo = async ({ name }) => {
   const res = await fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     body: JSON.stringify({
       name: name,
@@ -58,36 +58,36 @@ export const patchUserInfo = async ({ name, token }) => {
   return handleResponse(res);
 };
 
-export const saveMovie = async ({ movieData, token }) => {
+export const saveMovie = async ({ movieData }) => {
   const res = await fetch(`${BASE_URL}/movies`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     body: JSON.stringify(movieData),
   });
   return handleResponse(res);
 };
 
-export const getSavedMovies = async (token) => {
+export const getSavedMovies = async () => {
   const res = await fetch(`${BASE_URL}/movies`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   });
   return handleResponse(res);
 };
 
-export const deleteMovie = async ({ id, token }) => {
+export const deleteMovie = async ({ id }) => {
   const res = await fetch(`${BASE_URL}/movies/${id}`, {
     method: "DELETE",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   });
   return handleResponse(res);
