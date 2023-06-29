@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 const Movies = ({
   isLoggedIn,
   movies,
+  savedMovies,
   toggleState,
   changeToggleState,
   handleSearch,
@@ -29,7 +30,11 @@ const Movies = ({
           toggleState={toggleState}
           changeToggleState={changeToggleState}
         />
-        <MoviesCardList movies={movies} filterMovies={filterMovies} />
+        <MoviesCardList
+          savedMovies={savedMovies}
+          movies={movies}
+          filterMovies={filterMovies}
+        />
       </main>
       <Footer />
     </>

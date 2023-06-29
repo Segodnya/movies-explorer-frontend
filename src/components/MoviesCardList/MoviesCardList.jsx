@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-const MoviesCardList = ({ movies, filterMovies }) => {
+const MoviesCardList = ({ movies, savedMovies, filterMovies }) => {
   const [visibleMovies, setVisibleMovies] = useState(12);
   const handleShowMore = () => {
     setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + getIncrement());
@@ -49,30 +49,16 @@ const MoviesCardList = ({ movies, filterMovies }) => {
           {window.location.pathname === "/saved-movies"
             ? movies.map((movie) => (
                 <li key={movie._id}>
-                  <MoviesCard
-                    movie={movie}
-                    title={movie.nameRU}
-                    cover={movie.image}
-                    duration={`${Math.floor(movie.duration / 60)}ч ${
-                      movie.duration % 60
-                    }мин`}
-                    trailerLink={movie.trailerLink}
-                    isLiked={movie.isLiked}
-                  />
+                  <MoviesCard movie={movie} />
                 </li>
               ))
             : filterMovies(movies).map((movie, index) => (
                 <li key={movie.id}>
                   {index < visibleMovies && (
                     <MoviesCard
+                      movies={movies}
+                      savedMovies={savedMovies}
                       movie={movie}
-                      title={movie.nameRU}
-                      cover={`https://api.nomoreparties.co${movie.image.url}`}
-                      duration={`${Math.floor(movie.duration / 60)}ч ${
-                        movie.duration % 60
-                      }мин`}
-                      trailerLink={movie.trailerLink}
-                      isLiked={movie.isLiked}
                     />
                   )}
                 </li>

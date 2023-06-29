@@ -97,10 +97,9 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    await getAllMovies();
-    console.log(movies);
+    getAllMovies();
   };
 
   const getAllMovies = () => {
@@ -114,9 +113,7 @@ const App = () => {
 
   const getSavedMoviesFromMongo = () => {
     api.getSavedMovies().then((data) => {
-      console.log(data, currentUser);
       setSavedMovies(data.filter((x) => x.owner === currentUser.id));
-      console.log(savedMovies);
     });
   };
 
@@ -170,6 +167,7 @@ const App = () => {
                   isLoggedIn={isLoggedIn}
                   component={Movies}
                   movies={movies}
+                  savedMovies={savedMovies}
                   toggleState={toggleState}
                   changeToggleState={changeToggleState}
                   handleSearch={handleSearch}
