@@ -15,6 +15,7 @@ import { getMovies } from "../../utils/api/moviesApi";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   // Создайте стейт currentUser в корневом компоненте
   const [currentUser, setCurrentUser] = useState({
     name: null,
@@ -39,6 +40,7 @@ const App = () => {
               name: res.name,
               email: res.email,
               isLoggedIn: true,
+              id: res._id,
             }));
           }
           setIsLoading(false);
@@ -114,10 +116,13 @@ const App = () => {
       console.log(savedMovies);
     });
   };
+
   const [savedMovies, setSavedMovies] = useState([]);
   useEffect(() => {
-    getSavedMoviesFromMongo();
-  }, []);
+    if (isLoggedIn) {
+      getSavedMoviesFromMongo();
+    }
+  }, [isLoggedIn]);
 
   const filterMovies = (movies) => {
     let filterredMovies;
