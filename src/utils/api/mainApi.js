@@ -59,7 +59,6 @@ export const patchUserInfo = async ({ name }) => {
 };
 
 export const saveMovie = async ({ movieData }) => {
-  console.log(movieData);
   const res = await fetch(`${BASE_URL}/movies`, {
     method: "POST",
     headers: {
@@ -85,7 +84,6 @@ export const getSavedMovies = async () => {
 export const deleteMovie = async ({ id }) => {
   const res = await fetch(`${BASE_URL}/movies/${id}`, {
     method: "DELETE",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,

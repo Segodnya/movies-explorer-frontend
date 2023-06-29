@@ -11,6 +11,7 @@ import "./App.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import * as api from "../../utils/api/mainApi";
 import ProtectedRouteElement from "../../utils/ProtectedRouteElement";
+import { getMovies } from "../../utils/api/moviesApi";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,6 +20,7 @@ const App = () => {
     name: null,
     email: null,
     isLoggedIn: !!localStorage.getItem("userId"),
+    id: localStorage.getItem("userId"),
   });
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -30,7 +32,6 @@ const App = () => {
       api
         .getContent(jwt)
         .then((res) => {
-          console.log(res);
           if (res) {
             setIsLoggedIn(true);
             localStorage.setItem("userId", res._id);
@@ -81,6 +82,54 @@ const App = () => {
       });
   };
 
+  // Toggle Short Films
+
+  const [toggleState, setToggleState] = useState(false);
+
+  const changeToggleState = () => {
+    setToggleState(!toggleState);
+  };
+
+  // Search Query
+
+  const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    getAllMovies();
+  };
+
+  const getAllMovies = () => {
+    getMovies().then((data) => {
+      data.map((x) => (x.isLiked = false));
+      setMovies(data);
+    });
+  };
+
+  const getSavedMoviesFromMongo = () => {
+    api.getSavedMovies().then((data) => {
+      console.log(data, currentUser);
+      setSavedMovies(data.filter((x) => x.owner === currentUser.id));
+      console.log(savedMovies);
+    });
+  };
+  const [savedMovies, setSavedMovies] = useState([]);
+  useEffect(() => {
+    getSavedMoviesFromMongo();
+  }, []);
+
+  const filterMovies = (movies) => {
+    let filterredMovies;
+    filterredMovies = movies.filter((item) =>
+      item.nameRU.toLowerCase().includes(query.toLowerCase())
+    );
+    if (toggleState) {
+      filterredMovies = filterredMovies.filter((item) => item.duration <= 40);
+    }
+    return filterredMovies;
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -112,6 +161,13 @@ const App = () => {
                 <ProtectedRouteElement
                   isLoggedIn={isLoggedIn}
                   component={Movies}
+                  movies={movies}
+                  toggleState={toggleState}
+                  changeToggleState={changeToggleState}
+                  handleSearch={handleSearch}
+                  query={query}
+                  setQuery={setQuery}
+                  filterMovies={filterMovies}
                 />
               }
             />
@@ -121,6 +177,13 @@ const App = () => {
                 <ProtectedRouteElement
                   isLoggedIn={isLoggedIn}
                   component={SavedMovies}
+                  savedMovies={savedMovies}
+                  toggleState={toggleState}
+                  changeToggleState={changeToggleState}
+                  handleSearch={handleSearch}
+                  query={query}
+                  setQuery={setQuery}
+                  filterMovies={filterMovies}
                 />
               }
             />

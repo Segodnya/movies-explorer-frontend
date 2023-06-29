@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MoviesCard.css";
 import { Link } from "react-router-dom";
-import { saveMovie } from "../../utils/api/mainApi";
+import { deleteMovie, saveMovie } from "../../utils/api/mainApi";
 
 const MoviesCard = ({
   movie,
@@ -12,7 +12,6 @@ const MoviesCard = ({
   trailerLink,
 }) => {
   const [liked, setLiked] = useState(isLiked);
-  console.log(liked, movie.image.url);
 
   const handleLike = (movie) => {
     if (isLiked === false) {
@@ -21,6 +20,11 @@ const MoviesCard = ({
     } else {
       setLiked(!liked);
     }
+  };
+
+  const handleDelete = () => {
+    deleteMovie({ id: movie._id });
+    setLiked(!liked);
   };
 
   const saveMovieToMongo = async () => {
@@ -38,7 +42,6 @@ const MoviesCard = ({
       movieId: movie.id,
     };
     await saveMovie({ movieData: updatedMovie });
-    console.log("film saved");
   };
 
   return (
@@ -48,18 +51,28 @@ const MoviesCard = ({
       </Link>
       <div className="movie-card__description">
         <h2 className="movie-card__title">{title}</h2>
-        {liked ? (
+        {window.location.pathname === "/saved-movies" ? (
           <button
-            onClick={handleLike}
-            className="movie-card__button movie-card__button_type_dislike"
+            onClick={handleDelete}
+            className="movie-card__button movie-card__button_type_delete"
             type="button"
           ></button>
         ) : (
-          <button
-            onClick={handleLike}
-            className="movie-card__button movie-card__button_type_like"
-            type="button"
-          ></button>
+          <>
+            {liked ? (
+              <button
+                onClick={handleLike}
+                className="movie-card__button movie-card__button_type_dislike"
+                type="button"
+              ></button>
+            ) : (
+              <button
+                onClick={handleLike}
+                className="movie-card__button movie-card__button_type_like"
+                type="button"
+              ></button>
+            )}
+          </>
         )}
       </div>
       <p className="movie-card__duration">{duration}</p>

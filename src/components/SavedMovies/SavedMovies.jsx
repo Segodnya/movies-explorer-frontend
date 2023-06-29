@@ -3,39 +3,33 @@ import "./SavedMovies.css";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import cover from "../../images/movie.png";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = ({ isLoggedIn }) => {
-  let savedMovies = [
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: true,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: true,
-    },
-    {
-      title: "Gimme Danger: История Игги и The Stooges",
-      cover: cover,
-      duration: "1ч 42м",
-      isOwn: true,
-    },
-  ];
-
+const SavedMovies = ({
+  isLoggedIn,
+  savedMovies,
+  toggleState,
+  changeToggleState,
+  handleSearch,
+  query,
+  setQuery,
+  filterMovies,
+}) => {
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
       <main className="movies" aria-label="Список сохраненных фильмов">
-        <SearchForm />
-        <FilterCheckbox />
-        <MoviesCardList movies={savedMovies} />
+        <SearchForm
+          handleSearch={handleSearch}
+          query={query}
+          setQuery={setQuery}
+        />
+        <FilterCheckbox
+          toggleState={toggleState}
+          changeToggleState={changeToggleState}
+        />
+        <MoviesCardList movies={savedMovies} filterMovies={filterMovies} />
         <button className="movies__button" type="button">
           Еще
         </button>
