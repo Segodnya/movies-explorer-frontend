@@ -76,7 +76,7 @@ const App = () => {
         if (res) {
           setIsLoggedIn(true);
           localStorage.setItem("jwt", res.token);
-          navigate("/");
+          navigate("/movies");
         }
       })
       .catch((err) => {
@@ -97,14 +97,17 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    getAllMovies();
+    await getAllMovies();
+    console.log(movies);
   };
 
   const getAllMovies = () => {
     getMovies().then((data) => {
-      data.map((x) => (x.isLiked = false));
+      data.map((x) => {
+        x.isLiked = savedMovies.some((movie) => movie.movieId === x.id);
+      });
       setMovies(data);
     });
   };

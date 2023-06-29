@@ -30,9 +30,6 @@ const Movies = ({
           changeToggleState={changeToggleState}
         />
         <MoviesCardList movies={movies} filterMovies={filterMovies} />
-        <button className="movies__button" type="button">
-          Еще
-        </button>
       </main>
       <Footer />
     </>

@@ -1,11 +1,11 @@
 .movie-card {
-  width: 270px;
+  max-width: 270px;
   box-sizing: border-box;
 }
 .movie-card__image {
   display: block;
   object-fit: cover;
-  width: 270px;
+  max-width: 270px;
   height: 150px;
 }
 .movie-card__description {
@@ -51,18 +51,18 @@
   color: #8b8b8b;
 }
 
-@media screen and (width < 1024px) {
+/* @media screen and (width < 1024px) {
   .movie-card {
-    width: 340px;
+    max-width: 340px;
   }
   .movie-card__image {
-    width: 340px;
+    max-width: 340px;
     height: 190px;
   }
   .movie-card__title {
     max-width: 296px;
   }
-}
+} */
 
 @media screen and (width < 768px) {
   .movie-card {
