@@ -15,6 +15,7 @@ const SavedMovies = ({
   query,
   setQuery,
   filterMovies,
+  setSavedMovies,
 }) => {
   return (
     <>
@@ -29,7 +30,11 @@ const SavedMovies = ({
           toggleState={toggleState}
           changeToggleState={changeToggleState}
         />
-        <MoviesCardList movies={savedMovies} filterMovies={filterMovies} />
+        <MoviesCardList
+          movies={savedMovies}
+          filterMovies={filterMovies}
+          setSavedMovies={setSavedMovies}
+        />
       </main>
       <Footer />
     </>

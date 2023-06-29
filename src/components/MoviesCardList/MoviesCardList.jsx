@@ -2,10 +2,25 @@ import React, { useState, useEffect } from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-const MoviesCardList = ({ movies, savedMovies, filterMovies }) => {
+const MoviesCardList = ({
+  movies,
+  savedMovies,
+  filterMovies,
+  setSavedMovies,
+}) => {
   const [visibleMovies, setVisibleMovies] = useState(12);
+
   const handleShowMore = () => {
     setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + getIncrement());
+  };
+
+  const handleMovieDelete = async (movieId) => {
+    const updatedSavedMovies = savedMovies.filter(
+      (movie) => movie._id !== movieId
+    );
+    console.log(savedMovies);
+    await setSavedMovies(updatedSavedMovies);
+    console.log(savedMovies);
   };
 
   const getIncrement = () => {
@@ -40,6 +55,10 @@ const MoviesCardList = ({ movies, savedMovies, filterMovies }) => {
     };
   }, []);
 
+  useEffect(() => {
+    setVisibleMovies(12);
+  }, [savedMovies]);
+
   return (
     <>
       {movies.length === 0 ? (
@@ -49,7 +68,7 @@ const MoviesCardList = ({ movies, savedMovies, filterMovies }) => {
           {window.location.pathname === "/saved-movies"
             ? movies.map((movie) => (
                 <li key={movie._id}>
-                  <MoviesCard movie={movie} />
+                  <MoviesCard movie={movie} onDelete={handleMovieDelete} />
                 </li>
               ))
             : filterMovies(movies).map((movie, index) => (

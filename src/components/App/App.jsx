@@ -99,7 +99,12 @@ const App = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    getAllMovies();
+    if (window.location.pathname === "/saved-movies") {
+      setQuery(e.target[0].value);
+      console.log(query);
+    } else {
+      getAllMovies();
+    }
   };
 
   const getAllMovies = () => {
@@ -118,11 +123,13 @@ const App = () => {
   };
 
   const [savedMovies, setSavedMovies] = useState([]);
+
   useEffect(() => {
     if (isLoggedIn) {
       getSavedMoviesFromMongo();
+      filterMovies(savedMovies);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, query]);
 
   const filterMovies = (movies) => {
     let filterredMovies;
@@ -184,6 +191,7 @@ const App = () => {
                   isLoggedIn={isLoggedIn}
                   component={SavedMovies}
                   savedMovies={savedMovies}
+                  setSavedMovies={setSavedMovies}
                   toggleState={toggleState}
                   changeToggleState={changeToggleState}
                   handleSearch={handleSearch}

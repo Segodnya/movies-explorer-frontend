@@ -3,7 +3,7 @@ import "./MoviesCard.css";
 import { Link } from "react-router-dom";
 import { deleteMovie, saveMovie } from "../../utils/api/mainApi";
 
-const MoviesCard = ({ movie, movies, savedMovies }) => {
+const MoviesCard = ({ movie, movies, savedMovies, onDelete }) => {
   const [liked, setLiked] = useState(movie.isLiked);
 
   const handleLike = () => {
@@ -16,6 +16,7 @@ const MoviesCard = ({ movie, movies, savedMovies }) => {
         (x) => x.id === selectedMovie.id
       );
       deleteMovie({ id: movieToBeDeleted[0]._id });
+      onDelete(movie._id);
       setLiked(!liked);
     }
   };
