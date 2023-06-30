@@ -105,7 +105,7 @@ const App = () => {
         if (res) {
           setIsLoggedIn(true);
           localStorage.setItem("jwt", res.token);
-          navigate("/movies");
+          // navigate("/movies");
         }
       })
       .catch((err) => {

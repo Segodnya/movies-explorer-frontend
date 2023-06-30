@@ -4,7 +4,7 @@ import useForm from "../../hooks/useForm";
 import logo from "../../images/logo.svg";
 import "./Login.css";
 
-const Login = ({ onAuthorize }) => {
+const Login = ({ onAuthorize, isLoading }) => {
   const { values, errors, handleChange, isFormValid } = useForm();
 
   const handleSubmit = (e) => {
@@ -70,7 +70,7 @@ const Login = ({ onAuthorize }) => {
             type="submit"
             className="auth__button-save"
             id="auth-button-save-login"
-            disabled={!isFormValid}
+            disabled={!isFormValid || isLoading}
           >
             Войти
           </button>
