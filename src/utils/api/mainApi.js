@@ -43,6 +43,16 @@ export const getContent = async (token) => {
   return handleResponse(res);
 };
 
+export const getUserInfo = () => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => handleResponse(res));
+};
+
 export const patchUserInfo = async ({ name }) => {
   const res = await fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
