@@ -4,32 +4,20 @@ import Header from "../Header/Header";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { patchUserInfo } from "../../utils/api/mainApi";
 
-const Profile = ({ setCurrentUser, navigate }) => {
-  const { name, email, isLoggedIn } = useContext(CurrentUserContext);
+const Profile = ({ onSignOut, onUpdateUser, isLoggedIn, isLoading }) => {
+  const currentUser = useContext(CurrentUserContext);
   const [isEditing, setIsEditing] = useState(false);
-  const [newName, setNewName] = useState(name);
+  const [newName, setNewName] = useState(currentUser.name);
 
   useEffect(() => {
     setNewName(newName);
   }, [newName]);
 
-  // Выход
-  const handleSignOut = () => {
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("userId");
-    setCurrentUser({
-      name: null,
-      email: null,
-      isLoggedIn: false,
-    });
-    navigate("/signin");
-  };
-
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
       <main className="profile">
-        <h1 className="profile__title">Привет, {name}!</h1>
+        <h1 className="profile__title">Привет, {currentUser.name}!</h1>
         <div className="profile__form">
           <div className="profile__row">
             <p className="profile__text">Имя</p>
@@ -40,12 +28,12 @@ const Profile = ({ setCurrentUser, navigate }) => {
                 onChange={(e) => setNewName(e.target.value)}
               />
             ) : (
-              <p className="profile__text">{name}</p>
+              <p className="profile__text">{currentUser.name}</p>
             )}
           </div>
           <div className="profile__row">
             <p className="profile__text">E-mail</p>
-            <p className="profile__text">{email}</p>
+            <p className="profile__text">{currentUser.email}</p>
           </div>
         </div>
         <div className="profile__buttons">
@@ -74,7 +62,7 @@ const Profile = ({ setCurrentUser, navigate }) => {
           <button
             className="profile__button profile__button_color_red"
             type="button"
-            onClick={handleSignOut}
+            onClick={onSignOut}
           >
             Выйти из аккаунта
           </button>

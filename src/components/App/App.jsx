@@ -16,6 +16,7 @@ import { getMovies } from "../../utils/api/moviesApi";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isUserLoaded, setIsUserLoaded] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
@@ -26,30 +27,44 @@ const App = () => {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      api
-        .getContent(jwt)
-        .then((res) => {
-          if (res) {
-            setIsLoggedIn(true);
-            localStorage.removeItem("allMovies");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    checkLoggedInStatus();
   }, []);
+
+  async function checkLoggedInStatus() {
+    const jwt = localStorage.getItem("jwt");
+    console.log(jwt);
+    if (jwt) {
+      setIsLoading(true);
+      try {
+        const res = await api.getUserInfo();
+        console.log(res);
+        if (res) {
+          setIsLoggedIn(true);
+          setCurrentUser(res);
+          localStorage.removeItem("allMovies");
+          navigate(path);
+        }
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsLoading(false);
+        setIsUserLoaded(true);
+      }
+    } else {
+      setIsUserLoaded(true);
+    }
+  }
 
   useEffect(() => {
     if (isLoggedIn) {
+      setIsLoading(true);
       Promise.all([api.getUserInfo(), api.getSavedMovies()])
         .then(([profileInfo, moviesData]) => {
           setCurrentUser(profileInfo);
           setSavedMovies(moviesData.filter((x) => x.owner === currentUser.id));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => setIsLoading(false));
     }
   }, [isLoggedIn]);
 
@@ -57,7 +72,7 @@ const App = () => {
     api
       .register(name, email, password)
       .then(() => {
-        handleAuthorize(email, password);
+        navigate("/signin");
       })
       .catch((err) => {
         console.log(err);
@@ -70,8 +85,8 @@ const App = () => {
       .authorize(email, password)
       .then((res) => {
         if (res) {
-          setIsLoggedIn(true);
           localStorage.setItem("jwt", res.token);
+          setIsLoggedIn(true);
           navigate("/");
         }
       })
@@ -157,6 +172,18 @@ const App = () => {
             path="/signup"
             element={
               <Register onRegister={handleRegister} isLoading={isLoading} />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRouteElement
+                onSignOut={handleSignOut}
+                onUpdateUser={handleUpdateUser}
+                isLoggedIn={isLoggedIn}
+                component={Profile}
+                isLoading={isLoading}
+              />
             }
           />
           <Route path="*" element={<NotFound />} />
