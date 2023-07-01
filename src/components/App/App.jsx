@@ -159,6 +159,7 @@ const App = () => {
               <Register onRegister={handleRegister} isLoading={isLoading} />
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </CurrentUserContext.Provider>
