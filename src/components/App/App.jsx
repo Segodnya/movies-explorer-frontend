@@ -16,7 +16,6 @@ import { getMovies } from "../../utils/api/moviesApi";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [isUserLoaded, setIsUserLoaded] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
@@ -48,10 +47,8 @@ const App = () => {
         console.log(err);
       } finally {
         setIsLoading(false);
-        setIsUserLoaded(true);
       }
     } else {
-      setIsUserLoaded(true);
     }
   }
 
