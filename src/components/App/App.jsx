@@ -25,7 +25,6 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
 
-  // Проверка токена и авторизация пользователя
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -34,61 +33,30 @@ const App = () => {
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
-            // localStorage.setItem("userId", res._id);
             localStorage.removeItem("allMovies");
-            // setCurrentUser((oldState) => ({
-            //   name: res.name,
-            //   email: res.email,
-            //   isLoggedIn: true,
-            //   id: res._id,
-            // }));
           }
-          // setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
-          // setIsLoading(false);
         });
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     getSavedMoviesFromMongo();
-  //     filterMovies(savedMovies);
-  //   }
-  // }, [isLoggedIn, query]);
-
   useEffect(() => {
     if (isLoggedIn) {
-      api
-        .getUserInfo()
-        .then((profileInfo) => {
+      Promise.all([api.getUserInfo(), api.getSavedMovies()])
+        .then(([profileInfo, moviesData]) => {
           setCurrentUser(profileInfo);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-      api
-        .getSavedMovies()
-        .then((moviesData) => {
           setSavedMovies(moviesData.filter((x) => x.owner === currentUser.id));
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => console.log(err));
     }
-  }, [isLoggedIn, navigate, currentUser]);
+  }, [isLoggedIn]);
 
-  // Регистрация пользователя
   const handleRegister = (name, email, password) => {
     api
       .register(name, email, password)
       .then(() => {
-        // if (res) {
-        //   navigate("/signin");
-        // }
         handleAuthorize(email, password);
       })
       .catch((err) => {
@@ -96,7 +64,6 @@ const App = () => {
       });
   };
 
-  // Авторизация пользователя
   const handleAuthorize = (email, password) => {
     setIsLoading(true);
     api
@@ -105,7 +72,7 @@ const App = () => {
         if (res) {
           setIsLoggedIn(true);
           localStorage.setItem("jwt", res.token);
-          // navigate("/movies");
+          navigate("/");
         }
       })
       .catch((err) => {
@@ -175,60 +142,21 @@ const App = () => {
       });
   }
 
-  // // Toggle Short Films
-
-  // const [toggleState, setToggleState] = useState(false);
-
-  // const changeToggleState = () => {
-  //   setToggleState(!toggleState);
-  // };
-
-  // // Search Query
-
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   if (path === "/saved-movies") {
-  //     setQuery(e.target[0].value);
-  //     console.log(query);
-  //   } else {
-  //     getAllMovies();
-  //   }
-  // };
-
-  // const getAllMovies = () => {
-  //   getMovies().then((data) => {
-  //     data.map((x) => {
-  //       x.isLiked = savedMovies.some((movie) => movie.movieId === x.id);
-  //     });
-  //     setMovies(data);
-  //   });
-  // };
-
-  // const getSavedMoviesFromMongo = () => {
-  //   api.getSavedMovies().then((data) => {
-  //     setSavedMovies(data.filter((x) => x.owner === currentUser.id));
-  //   });
-  // };
-
-  // const filterMovies = (movies) => {
-  //   let filterredMovies;
-  //   filterredMovies = movies.filter((item) =>
-  //     item.nameRU.toLowerCase().includes(query.toLowerCase())
-  //   );
-  //   if (toggleState) {
-  //     filterredMovies = filterredMovies.filter((item) => item.duration <= 40);
-  //   }
-  //   return filterredMovies;
-  // };
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
         <Routes>
+          <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
           <Route
             path="/signin"
             element={
               <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Register onRegister={handleRegister} isLoading={isLoading} />
             }
           />
         </Routes>

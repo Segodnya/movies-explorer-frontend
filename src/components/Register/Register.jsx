@@ -4,7 +4,7 @@ import useForm from "../../hooks/useForm";
 import logo from "../../images/logo.svg";
 import "./Register.css";
 
-const Register = ({ onRegister }) => {
+const Register = ({ onRegister, isLoading }) => {
   const { values, errors, handleChange, isFormValid } = useForm();
 
   const handleSubmit = (e) => {
@@ -88,7 +88,7 @@ const Register = ({ onRegister }) => {
             type="submit"
             className="auth__button-save"
             id="auth-button-save"
-            disabled={!isFormValid}
+            disabled={!isFormValid || isLoading}
           >
             Зарегистрироваться
           </button>
