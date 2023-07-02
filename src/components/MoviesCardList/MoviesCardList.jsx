@@ -1,44 +1,32 @@
-import React, { useState, useEffect } from "react";
-import "./MoviesCardList.css";
-import MoviesCard from "../MoviesCard/MoviesCard";
+import React, { useState, useEffect } from 'react';
+import './MoviesCardList.css';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import Preloader from '../Preloader/Preloader';
 
-const MoviesCardList = ({
-  movies,
-  savedMovies,
-  filterMovies,
-  setSavedMovies,
-}) => {
-  const [visibleMovies, setVisibleMovies] = useState(12);
+const MoviesCardList = ({ savedMovies, cards, isSavedMovies, isLoading, isRequestError, isNotFound, onLike, onDislike }) => {
+  const [visibleMovies, setVisibleMovies] = useState(0);
+  const path = window.location.pathname;
 
-  const handleShowMore = () => {
-    setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + getIncrement());
-  };
-
-  const handleMovieDelete = async (movieId) => {
-    const updatedSavedMovies = savedMovies.filter(
-      (movie) => movie._id !== movieId
-    );
-    console.log(savedMovies);
-    await setSavedMovies(updatedSavedMovies);
-    console.log(savedMovies);
-  };
-
-  const getIncrement = () => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024 && screenWidth <= 1174) {
-      return 3;
-    } else if (screenWidth >= 595 && screenWidth <= 1023) {
-      return 2;
-    } else if (screenWidth <= 594) {
-      return 2;
-    } else {
-      return 8;
+  const visibleCount = () => {
+    const width = window.innerWidth;
+    if (width > 1174) {
+      setVisibleMovies(12);
+    } else if (width > 1023) {
+      setVisibleMovies(12);
+    } else if (width > 595) {
+      setVisibleMovies(9);
+    } else if (width <= 595) {
+      setVisibleMovies(5);
     }
   };
 
   useEffect(() => {
+    visibleCount();
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
-      setVisibleMovies(12);
+      setVisibleMovies(visibleCount());
     };
 
     const debouncedHandleResize = () => {
@@ -47,51 +35,81 @@ const MoviesCardList = ({
     };
 
     let resizeTimer;
-    window.addEventListener("resize", debouncedHandleResize);
+    window.addEventListener('resize', debouncedHandleResize);
 
     return () => {
       clearTimeout(resizeTimer);
-      window.removeEventListener("resize", debouncedHandleResize);
+      window.removeEventListener('resize', debouncedHandleResize);
     };
   }, []);
 
-  useEffect(() => {
-    setVisibleMovies(12);
-  }, [savedMovies]);
+  const showMore = () => {
+    const width = window.innerWidth;
+    if (width > 1174) {
+      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
+    } else if (width > 1023) {
+      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
+    } else if (width > 595) {
+      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 3);
+    } else if (width <= 595) {
+      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 2);
+    }
+  };
+
+  const getCard = (savedMovies, card) => {
+    return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
+  };
 
   return (
     <>
-      {movies.length === 0 ? (
-        <div></div>
-      ) : (
-        <ul className="list movies-card-list">
-          {window.location.pathname === "/saved-movies"
-            ? movies.map((movie) => (
-                <li key={movie._id}>
-                  <MoviesCard movie={movie} onDelete={handleMovieDelete} />
-                </li>
-              ))
-            : filterMovies(movies).map((movie, index) => (
-                <li key={movie.id}>
-                  {index < visibleMovies && (
-                    <MoviesCard
-                      movies={movies}
-                      savedMovies={savedMovies}
-                      movie={movie}
-                    />
-                  )}
-                </li>
-              ))}
-        </ul>
-      )}
-      {visibleMovies < movies.length && (
-        <button
-          className="movies__button"
-          type="button"
-          onClick={handleShowMore}
-        >
-          Еще
-        </button>
+      {isLoading && <Preloader />}
+      {isNotFound && !isLoading && <>Ничего не найдено</>}
+      {isRequestError && !isLoading && <>Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.</>}
+      {!isLoading && !isRequestError && !isNotFound && (
+        <>
+          {path === '/saved-movies' ? (
+            <>
+              <ul className="list movies-card-list">
+                {cards.map((card) => (
+                  <MoviesCard
+                    key={isSavedMovies ? card._id : card.id}
+                    saved={getCard(savedMovies, card)}
+                    cards={cards}
+                    card={card}
+                    isSavedMovies={isSavedMovies}
+                    onLike={onLike}
+                    onDislike={onDislike}
+                    savedMovies={savedMovies}
+                  />
+                ))}
+              </ul>
+            </>
+          ) : (
+            <>
+              <ul className="list movies-card-list">
+                {cards.slice(0, visibleMovies).map((card) => (
+                  <MoviesCard
+                    key={isSavedMovies ? card._id : card.id}
+                    saved={getCard(savedMovies, card)}
+                    cards={cards}
+                    card={card}
+                    isSavedMovies={isSavedMovies}
+                    onLike={onLike}
+                    onDislike={onDislike}
+                    savedMovies={savedMovies}
+                  />
+                ))}
+              </ul>
+              {cards.length > visibleMovies ? (
+                <button className="movies__button" type="button" onClick={showMore}>
+                  Ещё
+                </button>
+              ) : (
+                ''
+              )}
+            </>
+          )}
+        </>
       )}
     </>
   );

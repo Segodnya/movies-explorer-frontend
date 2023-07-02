@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import Main from "../Main/Main";
-import Movies from "../Movies/Movies";
-import SavedMovies from "../SavedMovies/SavedMovies";
-import Profile from "../Profile/Profile";
-import Login from "../Login/Login";
-import Register from "../Register/Register";
-import NotFound from "../NotFound/NotFound";
-import "./App.css";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
-import * as api from "../../utils/api/mainApi";
-import ProtectedRouteElement from "../../utils/ProtectedRouteElement";
-import { getMovies } from "../../utils/api/moviesApi";
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
+import Login from '../Login/Login';
+import Register from '../Register/Register';
+import NotFound from '../NotFound/NotFound';
+import './App.css';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import * as api from '../../utils/api/mainApi';
+import ProtectedRouteElement from '../../utils/ProtectedRouteElement';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,25 +21,20 @@ const App = () => {
   const navigate = useNavigate();
   const path = window.location.pathname;
 
-  const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState("");
-
   useEffect(() => {
     checkLoggedInStatus();
   }, []);
 
   async function checkLoggedInStatus() {
-    const jwt = localStorage.getItem("jwt");
-    console.log(jwt);
+    const jwt = localStorage.getItem('jwt');
     if (jwt) {
       setIsLoading(true);
       try {
         const res = await api.getUserInfo();
-        console.log(res);
         if (res) {
           setIsLoggedIn(true);
           setCurrentUser(res);
-          localStorage.removeItem("allMovies");
+          localStorage.removeItem('allMovies');
           navigate(path);
         }
       } catch (err) {
@@ -69,7 +63,7 @@ const App = () => {
     api
       .register(name, email, password)
       .then(() => {
-        navigate("/signin");
+        navigate('/signin');
       })
       .catch((err) => {
         console.log(err);
@@ -82,9 +76,9 @@ const App = () => {
       .authorize(email, password)
       .then((res) => {
         if (res) {
-          localStorage.setItem("jwt", res.token);
+          localStorage.setItem('jwt', res.token);
           setIsLoggedIn(true);
-          navigate("/");
+          navigate('/');
         }
       })
       .catch((err) => {
@@ -113,26 +107,41 @@ const App = () => {
   }
 
   function handleUnauthorized(err) {
-    if (err === "Error: 401") {
+    if (err === 'Error: 401') {
       handleSignOut();
     }
   }
 
   const handleSignOut = () => {
     setIsLoggedIn(false);
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("movies");
-    localStorage.removeItem("movieSearch");
-    localStorage.removeItem("shortMovies");
-    localStorage.removeItem("allMovies");
-    navigate("/");
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('movies');
+    localStorage.removeItem('query');
+    localStorage.removeItem('short');
+    localStorage.removeItem('allMovies');
+    navigate('/');
   };
 
   function handleLike(movie) {
     api
-      .saveMovie(movie)
+      .saveMovie({
+        movieData: {
+          country: movie.country,
+          director: movie.director,
+          duration: movie.duration,
+          year: movie.year,
+          description: movie.description,
+          image: `https://api.nomoreparties.co${movie.image.url}`,
+          trailerLink: movie.trailerLink,
+          nameRU: movie.nameRU,
+          nameEN: movie.nameEN,
+          thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
+          movieId: movie.id,
+        },
+      })
       .then((newMovie) => {
         setSavedMovies([newMovie, ...savedMovies]);
+        console.log(savedMovies);
       })
       .catch((err) => {
         console.log(err);
@@ -144,9 +153,7 @@ const App = () => {
     api
       .deleteMovie(movie._id)
       .then(() => {
-        setSavedMovies((state) =>
-          state.filter((item) => item._id !== movie._id)
-        );
+        setSavedMovies((state) => state.filter((item) => item._id !== movie._id));
       })
       .catch((err) => {
         console.log(err);
@@ -159,30 +166,10 @@ const App = () => {
       <div className="app">
         <Routes>
           <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
-          <Route
-            path="/signin"
-            element={
-              <Login onAuthorize={handleAuthorize} isLoading={isLoading} />
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <Register onRegister={handleRegister} isLoading={isLoading} />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRouteElement
-                onSignOut={handleSignOut}
-                onUpdateUser={handleUpdateUser}
-                isLoggedIn={isLoggedIn}
-                component={Profile}
-                isLoading={isLoading}
-              />
-            }
-          />
+          <Route path="/signin" element={<Login onAuthorize={handleAuthorize} isLoading={isLoading} />} />
+          <Route path="/signup" element={<Register onRegister={handleRegister} isLoading={isLoading} />} />
+          <Route path="/movies" element={<ProtectedRouteElement component={Movies} isLoggedIn={isLoggedIn} savedMovies={savedMovies} onDislike={handleDislike} onLike={handleLike} />} />
+          <Route path="/profile" element={<ProtectedRouteElement component={Profile} onSignOut={handleSignOut} onUpdateUser={handleUpdateUser} isLoggedIn={isLoggedIn} isLoading={isLoading} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
