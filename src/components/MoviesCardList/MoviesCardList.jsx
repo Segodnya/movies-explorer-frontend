@@ -10,18 +10,18 @@ const MoviesCardList = ({ savedMovies, cards, isSavedMovies, isLoading, isReques
   const visibleCount = () => {
     const width = window.innerWidth;
     if (width > 1174) {
-      setVisibleMovies(12);
+      return 12;
     } else if (width > 1023) {
-      setVisibleMovies(12);
+      return 12;
     } else if (width > 595) {
-      setVisibleMovies(9);
+      return 9;
     } else if (width <= 595) {
-      setVisibleMovies(5);
+      return 5;
     }
   };
 
   useEffect(() => {
-    visibleCount();
+    setVisibleMovies(visibleCount());
   }, []);
 
   useEffect(() => {
