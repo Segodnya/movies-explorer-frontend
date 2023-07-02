@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import useForm from "../../hooks/useForm";
-import logo from "../../images/logo.svg";
-import "./Register.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useForm from '../../hooks/useForm';
+import logo from '../../images/logo.svg';
+import './Register.css';
 
 const Register = ({ onRegister, isLoading }) => {
   const { values, errors, handleChange, isFormValid } = useForm();
@@ -19,25 +19,17 @@ const Register = ({ onRegister, isLoading }) => {
           <img src={logo} alt="логотип сайта" />
         </Link>
         <h1 className="auth__title">Добро пожаловать!</h1>
-        <form
-          name="register"
-          className="auth__form"
-          id="register-form"
-          noValidate
-          onSubmit={handleSubmit}
-        >
+        <form name="register" className="auth__form" id="register-form" noValidate onSubmit={handleSubmit}>
           <label className="auth__label" htmlFor="name">
             Имя
           </label>
           <input
             name="name"
-            className={`auth__input ${
-              errors.name ? "auth__input_errored" : ""
-            }`}
+            className={`auth__input ${errors.name ? 'auth__input_errored' : ''}`}
             id="name-input"
             type="text"
             placeholder="Имя"
-            value={values.name || ""}
+            value={values.name || ''}
             onChange={handleChange}
             autoComplete="off"
             required
@@ -51,13 +43,11 @@ const Register = ({ onRegister, isLoading }) => {
           </label>
           <input
             name="email"
-            className={`auth__input ${
-              errors.email ? "auth__input_errored" : ""
-            }`}
+            className={`auth__input ${errors.email ? 'auth__input_errored' : ''}`}
             id="email-input"
             type="email"
             placeholder="E-mail"
-            value={values.email || ""}
+            value={values.email || ''}
             onChange={handleChange}
             autoComplete="off"
             required
@@ -69,27 +59,18 @@ const Register = ({ onRegister, isLoading }) => {
           </label>
           <input
             name="password"
-            className={`auth__input ${
-              errors.password ? "auth__input_errored" : ""
-            }`}
+            className={`auth__input ${errors.password ? 'auth__input_errored' : ''}`}
             id="password-input"
             type="password"
             placeholder="Пароль"
-            value={values.password || ""}
+            value={values.password || ''}
             onChange={handleChange}
             autoComplete="off"
             required
           />
-          {errors.password && (
-            <span className="auth__error">{errors.password}</span>
-          )}
+          {errors.password && <span className="auth__error">{errors.password}</span>}
 
-          <button
-            type="submit"
-            className="auth__button-save"
-            id="auth-button-save"
-            disabled={!isFormValid || isLoading}
-          >
+          <button type="submit" className="auth__button-save" id="auth-button-save" disabled={!isFormValid || isLoading}>
             Зарегистрироваться
           </button>
         </form>

@@ -63,7 +63,7 @@ const App = () => {
     api
       .register(name, email, password)
       .then(() => {
-        navigate('/signin');
+        handleAuthorize(email, password);
       })
       .catch((err) => {
         console.log(err);
@@ -78,7 +78,7 @@ const App = () => {
         if (res) {
           localStorage.setItem('jwt', res.token);
           setIsLoggedIn(true);
-          navigate('/');
+          navigate('/movies');
         }
       })
       .catch((err) => {
