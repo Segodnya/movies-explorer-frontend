@@ -12,7 +12,7 @@
 
 @media screen and (width < 769px) {
   .header {
-    width: 98%;
+    max-width: 98%;
     padding: 8px 16px 32px;
   }
   .header__menu-button {
