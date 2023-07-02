@@ -15,7 +15,7 @@ const MoviesCard = ({ saved, card, isSavedMovies, onLike, onDislike, savedMovies
     onDislike(card);
   };
 
-  const cardSaveButtonClassName = `${saved ? 'movie-card__button movie-card__button_type_like' : 'movie-card__button movie-card__button_type_dislike'}`;
+  const cardSaveButtonClassName = `${saved ? 'movie-card__button movie-card__button_type_dislike' : 'movie-card__button movie-card__button_type_like'}`;
 
   return (
     <article className="movie-card">

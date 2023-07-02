@@ -169,6 +169,7 @@ const App = () => {
           <Route path="/signin" element={<Login onAuthorize={handleAuthorize} isLoading={isLoading} />} />
           <Route path="/signup" element={<Register onRegister={handleRegister} isLoading={isLoading} />} />
           <Route path="/movies" element={<ProtectedRouteElement component={Movies} isLoggedIn={isLoggedIn} savedMovies={savedMovies} onDislike={handleDislike} onLike={handleLike} />} />
+          <Route path="/saved-movies" element={<ProtectedRouteElement component={SavedMovies} isLoggedIn={isLoggedIn} savedMovies={savedMovies} onDislike={handleDislike} />} />
           <Route path="/profile" element={<ProtectedRouteElement component={Profile} onSignOut={handleSignOut} onUpdateUser={handleUpdateUser} isLoggedIn={isLoggedIn} isLoading={isLoading} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -176,76 +177,5 @@ const App = () => {
     </CurrentUserContext.Provider>
   );
 };
-
-{
-  /*
-
-            <Route
-              path="/signup"
-              element={<Register onRegister={handleRegister} />}
-            />
-            <Route
-              path="/signin"
-              element={<Login onAuthorize={handleAuthorize} />}
-            />
-
-            <Route
-              path="/"
-              element={
-                <ProtectedRouteElement
-                  isLoggedIn={isLoggedIn}
-                  component={Main}
-                />
-              }
-            />
-            <Route
-              path="/movies"
-              element={
-                <ProtectedRouteElement
-                  isLoggedIn={isLoggedIn}
-                  component={Movies}
-                  movies={movies}
-                  savedMovies={savedMovies}
-                  toggleState={toggleState}
-                  changeToggleState={changeToggleState}
-                  handleSearch={handleSearch}
-                  query={query}
-                  setQuery={setQuery}
-                  filterMovies={filterMovies}
-                />
-              }
-            />
-            <Route
-              path="/saved-movies"
-              element={
-                <ProtectedRouteElement
-                  isLoggedIn={isLoggedIn}
-                  component={SavedMovies}
-                  savedMovies={savedMovies}
-                  setSavedMovies={setSavedMovies}
-                  toggleState={toggleState}
-                  changeToggleState={changeToggleState}
-                  handleSearch={handleSearch}
-                  query={query}
-                  setQuery={setQuery}
-                  filterMovies={filterMovies}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRouteElement
-                  isLoggedIn={isLoggedIn}
-                  component={Profile}
-                  setCurrentUser={setCurrentUser}
-                  navigate={navigate}
-                />
-              }
-            />
-
-            <Route path="*" element={<NotFound />} />
-          </Routes> */
-}
 
 export default App;
