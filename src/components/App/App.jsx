@@ -52,7 +52,7 @@ const App = () => {
       Promise.all([api.getUserInfo(), api.getSavedMovies()])
         .then(([profileInfo, moviesData]) => {
           setCurrentUser(profileInfo);
-          setSavedMovies(moviesData.filter((x) => x.owner === currentUser.id));
+          setSavedMovies(moviesData.filter((x) => x.owner === currentUser._id).reverse());
         })
         .catch((err) => console.log(err))
         .finally(() => setIsLoading(false));
@@ -141,7 +141,6 @@ const App = () => {
       })
       .then((newMovie) => {
         setSavedMovies([newMovie, ...savedMovies]);
-        console.log(savedMovies);
       })
       .catch((err) => {
         console.log(err);
@@ -150,8 +149,9 @@ const App = () => {
   }
 
   function handleDislike(movie) {
+    console.log(movie);
     api
-      .deleteMovie(movie._id)
+      .deleteMovie({ id: movie._id })
       .then(() => {
         setSavedMovies((state) => state.filter((item) => item._id !== movie._id));
       })
