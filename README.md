@@ -1,5 +1,9 @@
 # movies-explorer-frontend
 
+## PR
+
+https://github.com/Segodnya/movies-explorer-frontend/pull/2
+
 ## Домен
 
 https://sgdn.nomoredomains.rocks/
