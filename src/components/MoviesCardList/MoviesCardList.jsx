@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
+import { MOVIES_COUNT_LG, MOVIES_COUNT_MD, MOVIES_COUNT_SM, MOVIES_INCREMENT_LG, MOVIES_INCREMENT_MD, MOVIES_INCREMENT_SM } from '../../utils/constants';
 
 const MoviesCardList = ({ savedMovies, cards, isSavedMovies, isLoading, isRequestError, isNotFound, onLike, onDislike }) => {
   const [visibleMovies, setVisibleMovies] = useState(0);
@@ -10,13 +11,13 @@ const MoviesCardList = ({ savedMovies, cards, isSavedMovies, isLoading, isReques
   const visibleCount = () => {
     const width = window.innerWidth;
     if (width > 1174) {
-      return 12;
+      return MOVIES_COUNT_LG;
     } else if (width > 1023) {
-      return 12;
+      return MOVIES_COUNT_LG;
     } else if (width > 595) {
-      return 9;
+      return MOVIES_COUNT_MD;
     } else if (width <= 595) {
-      return 5;
+      return MOVIES_COUNT_SM;
     }
   };
 
@@ -46,13 +47,13 @@ const MoviesCardList = ({ savedMovies, cards, isSavedMovies, isLoading, isReques
   const showMore = () => {
     const width = window.innerWidth;
     if (width > 1174) {
-      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
+      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + MOVIES_INCREMENT_LG);
     } else if (width > 1023) {
-      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
+      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + MOVIES_INCREMENT_LG);
     } else if (width > 595) {
-      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 3);
+      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + MOVIES_INCREMENT_MD);
     } else if (width <= 595) {
-      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 2);
+      setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + MOVIES_INCREMENT_SM);
     }
   };
 
