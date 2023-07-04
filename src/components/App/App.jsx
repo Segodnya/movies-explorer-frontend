@@ -12,6 +12,7 @@ import './App.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import * as api from '../../utils/api/mainApi';
 import ProtectedRouteElement from '../../utils/ProtectedRouteElement';
+import AuthorizedRouteElement from '../../utils/AuthorizedRouteElement';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -182,8 +183,8 @@ const App = () => {
       <div className="app">
         <Routes>
           <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
-          <Route path="/signin" element={<Login onAuthorize={handleAuthorize} isLoading={isLoading} />} />
-          <Route path="/signup" element={<Register onRegister={handleRegister} isLoading={isLoading} />} />
+          <Route path="/signin" element={<AuthorizedRouteElement component={Login} isLoggedIn={isLoggedIn} onAuthorize={handleAuthorize} isLoading={isLoading} />} />
+          <Route path="/signup" element={<AuthorizedRouteElement component={Register} isLoggedIn={isLoggedIn} onRegister={handleRegister} isLoading={isLoading} />} />
           <Route path="/movies" element={<ProtectedRouteElement component={Movies} isLoggedIn={isLoggedIn} savedMovies={savedMovies} onDislike={handleDislike} onLike={handleLike} />} />
           <Route path="/saved-movies" element={<ProtectedRouteElement component={SavedMovies} isLoggedIn={isLoggedIn} savedMovies={savedMovies} onDislike={handleDislike} />} />
           <Route path="/profile" element={<ProtectedRouteElement component={Profile} onSignOut={handleSignOut} onUpdateUser={handleUpdateUser} isLoggedIn={isLoggedIn} isLoading={isLoading} />} />
