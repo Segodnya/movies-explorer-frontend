@@ -31,7 +31,7 @@ const SearchForm = ({ onSearch, onCheckbox, isShortMovies }) => {
   return (
     <>
       <form className="search-form" onSubmit={handleSubmit}>
-        <input required className="search-form__input" name="query" placeholder="Фильм" value={query || ''} onChange={handleChange} />
+        <input formNoValidate className="search-form__input" name="query" placeholder="Фильм" value={query || ''} onChange={handleChange} />
         <button className="search-form__button" type="submit"></button>
       </form>
       <FilterCheckbox onCheckbox={onCheckbox} isShortMovies={isShortMovies} />
