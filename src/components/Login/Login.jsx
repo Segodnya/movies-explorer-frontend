@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import logo from '../../images/logo.svg';
 import './Login.css';
+import { REGEX_EMAIL } from '../../utils/constants';
 
 const Login = ({ onAuthorize, isLoading }) => {
   const { values, errors, handleChange, isFormValid } = useForm();
@@ -33,6 +34,7 @@ const Login = ({ onAuthorize, isLoading }) => {
             onChange={handleChange}
             autoComplete="off"
             required
+            pattern={REGEX_EMAIL}
           />
           {errors['login-email'] && <span className="auth__error">{errors['login-email']}</span>}
 
