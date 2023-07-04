@@ -1,11 +1,12 @@
 .movie-card {
-  max-width: 270px;
+  width: 270px;
   box-sizing: border-box;
 }
 .movie-card__image {
   display: block;
   object-fit: cover;
-  max-width: 270px;
+  object-position: center;
+  width: 270px;
   height: 150px;
 }
 .movie-card__description {
@@ -51,25 +52,25 @@
   color: #8b8b8b;
 }
 
-/* @media screen and (width < 1024px) {
+@media screen and (width < 1024px) {
   .movie-card {
-    max-width: 340px;
+    width: 340px;
   }
   .movie-card__image {
-    max-width: 340px;
+    width: 340px;
     height: 190px;
   }
   .movie-card__title {
     max-width: 296px;
   }
-} */
+}
 
 @media screen and (width < 768px) {
   .movie-card {
-    width: 100%;
+    width: 300px;
   }
   .movie-card__image {
-    width: 100%;
+    width: 300px;
     height: 168px;
   }
   .movie-card__title {
