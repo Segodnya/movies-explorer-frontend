@@ -21,6 +21,7 @@ const Movies = ({ isLoggedIn, savedMovies, onDislike, onLike }) => {
     setFilteredMovies(short ? filterDuration(moviesList) : moviesList);
     localStorage.setItem('movies', JSON.stringify(moviesList));
     localStorage.setItem('allMovies', JSON.stringify(movies));
+    localStorage.setItem('shorts', JSON.stringify(short));
   };
 
   const handleShortMovies = () => {
@@ -34,12 +35,12 @@ const Movies = ({ isLoggedIn, savedMovies, onDislike, onLike }) => {
     } else {
       setFilteredMovies(initialMovies);
     }
-    localStorage.setItem('shortMovies', !isShortMovies);
+    localStorage.setItem('shorts', !isShortMovies);
   };
 
   const onSearch = (query) => {
     localStorage.setItem('query', query);
-    localStorage.setItem('short', isShortMovies);
+    localStorage.setItem('shorts', isShortMovies);
 
     if (localStorage.getItem('allMovies')) {
       const movies = JSON.parse(localStorage.getItem('allMovies'));
@@ -62,7 +63,7 @@ const Movies = ({ isLoggedIn, savedMovies, onDislike, onLike }) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem('short') === 'true') {
+    if (localStorage.getItem('shorts') === 'true') {
       setIsShortMovies(true);
     } else {
       setIsShortMovies(false);
@@ -73,7 +74,7 @@ const Movies = ({ isLoggedIn, savedMovies, onDislike, onLike }) => {
     if (localStorage.getItem('movies')) {
       const movies = JSON.parse(localStorage.getItem('movies'));
       setInitialMovies(movies);
-      if (localStorage.getItem('short') === 'true') {
+      if (localStorage.getItem('shorts') === 'true') {
         setFilteredMovies(filterDuration(movies));
       } else {
         setFilteredMovies(movies);

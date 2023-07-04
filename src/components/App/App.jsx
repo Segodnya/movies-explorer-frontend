@@ -127,7 +127,7 @@ const App = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
     localStorage.removeItem('query');
-    localStorage.removeItem('short');
+    localStorage.removeItem('shorts');
     localStorage.removeItem('allMovies');
     navigate('/');
   };
