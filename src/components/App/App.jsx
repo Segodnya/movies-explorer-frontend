@@ -7,6 +7,7 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
+import { Tooltip } from '../Tooltip/Tooltip';
 import './App.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import * as api from '../../utils/api/mainApi';
@@ -17,6 +18,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const navigate = useNavigate();
   const path = window.location.pathname;
@@ -38,6 +40,7 @@ const App = () => {
           navigate(path);
         }
       } catch (err) {
+        setIsSuccess(false);
         console.log(err);
       } finally {
         setIsLoading(false);
@@ -54,7 +57,10 @@ const App = () => {
           setCurrentUser(profileInfo);
           setSavedMovies(moviesData.filter((x) => x.owner === currentUser._id).reverse());
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+          setIsSuccess(false);
+          console.log(err);
+        })
         .finally(() => setIsLoading(false));
     }
   }, [isLoggedIn]);
@@ -66,6 +72,7 @@ const App = () => {
         handleAuthorize(email, password);
       })
       .catch((err) => {
+        setIsSuccess(false);
         console.log(err);
       });
   };
@@ -82,6 +89,7 @@ const App = () => {
         }
       })
       .catch((err) => {
+        setIsSuccess(false);
         console.log(err);
       })
       .finally(() => {
@@ -98,6 +106,7 @@ const App = () => {
         setCurrentUser(data);
       })
       .catch((err) => {
+        setIsSuccess(false);
         console.log(err);
         handleUnauthorized(err);
       })
@@ -143,6 +152,7 @@ const App = () => {
         setSavedMovies([newMovie, ...savedMovies]);
       })
       .catch((err) => {
+        setIsSuccess(false);
         console.log(err);
         handleUnauthorized(err);
       });
@@ -156,9 +166,15 @@ const App = () => {
         setSavedMovies((state) => state.filter((item) => item._id !== movie._id));
       })
       .catch((err) => {
+        setIsSuccess(false);
         console.log(err);
         handleUnauthorized(err);
       });
+  }
+
+  function closeTooltip() {
+    setIsSuccess(true);
+    setIsUpdated(false);
   }
 
   return (
@@ -173,6 +189,8 @@ const App = () => {
           <Route path="/profile" element={<ProtectedRouteElement component={Profile} onSignOut={handleSignOut} onUpdateUser={handleUpdateUser} isLoggedIn={isLoggedIn} isLoading={isLoading} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Tooltip isSuccess={isSuccess} onClose={closeTooltip} />
+        <Tooltip isSuccess={!isUpdated} isUpdated={isUpdated} onClose={closeTooltip} />
       </div>
     </CurrentUserContext.Provider>
   );
