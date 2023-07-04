@@ -1,5 +1,4 @@
-// export const BASE_URL = 'https://api.sgdn.nomoredomains.rocks';
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://api.sgdn.nomoredomains.rocks';
 
 const handleResponse = (res) => {
   if (res.ok) {
