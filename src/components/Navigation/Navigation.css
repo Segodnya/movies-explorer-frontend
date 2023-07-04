@@ -26,6 +26,9 @@
   font-size: 12px;
   line-height: 133%;
 }
+.navigation__link.active {
+  color: #3ddc84;
+}
 .navigation-alwayson__link {
   display: flex;
   justify-content: center;

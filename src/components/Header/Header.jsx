@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import logo from '../../images/logo.svg';
 import menu from '../../images/menu_icon.svg';
@@ -14,9 +14,9 @@ function Header({ isLoggedIn }) {
 
   return (
     <header className="header">
-      <a href="/" className="link logo">
+      <NavLink to="/" className="link logo">
         <img src={logo} alt="логотип сайта" />
-      </a>
+      </NavLink>
 
       {isLoggedIn ? (
         <>
