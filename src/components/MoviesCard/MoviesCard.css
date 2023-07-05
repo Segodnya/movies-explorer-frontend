@@ -5,6 +5,7 @@
 .movie-card__image {
   display: block;
   object-fit: cover;
+  object-position: center;
   width: 270px;
   height: 150px;
 }
@@ -37,6 +38,9 @@
 .movie-card__button_type_like {
   background-image: url(../../images/like-white.svg);
 }
+.movie-card__button_type_dislike {
+  background-image: url(../../images/like-red.svg);
+}
 .movie-card__button_type_delete {
   background-image: url(../../images/delete.svg);
 }
@@ -63,10 +67,10 @@
 
 @media screen and (width < 768px) {
   .movie-card {
-    width: 100%;
+    width: 300px;
   }
   .movie-card__image {
-    width: 100%;
+    width: 300px;
     height: 168px;
   }
   .movie-card__title {

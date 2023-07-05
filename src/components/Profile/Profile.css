@@ -23,6 +23,11 @@
 .profile__row:first-of-type {
   border-bottom: 1px solid #424242;
 }
+.profile__input {
+  background: transparent;
+  border: none;
+  text-align: right;
+}
 .profile__text {
   margin: 0;
   padding: 16px 0;
@@ -52,6 +57,9 @@
 }
 .profile__button_color_red {
   color: #ee3465;
+}
+.profile__button_disabled {
+  color: #424242;
 }
 
 @media screen and (width < 1024px) {

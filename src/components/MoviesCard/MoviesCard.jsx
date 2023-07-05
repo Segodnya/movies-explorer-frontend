@@ -1,25 +1,36 @@
-import React from "react";
-import "./MoviesCard.css";
+import React from 'react';
+import { convertDuration } from '../../utils/utils';
+import './MoviesCard.css';
 
-const MoviesCard = ({ title, cover, duration, isOwn }) => {
+const MoviesCard = ({ saved, card, isSavedMovies, onLike, onDislike, savedMovies }) => {
+  const onButttonClick = () => {
+    if (saved) {
+      onDislike(savedMovies.filter((m) => m.movieId === card.id)[0]);
+    } else {
+      onLike(card);
+    }
+  };
+
+  const onButtonDeleteClick = () => {
+    onDislike(card);
+  };
+
+  const cardSaveButtonClassName = `${saved ? 'movie-card__button movie-card__button_type_dislike' : 'movie-card__button movie-card__button_type_like'}`;
+
   return (
     <article className="movie-card">
-      <img className="movie-card__image" src={cover} alt="обложка фильма" />
+      <a href={card.trailerLink} target="_blank" rel="noreferrer">
+        <img className="movie-card__image" alt={card.nameRU} src={isSavedMovies ? card.image : `https://api.nomoreparties.co/${card.image.url}`} />
+      </a>
       <div className="movie-card__description">
-        <h2 className="movie-card__title">{title}</h2>
-        {isOwn ? (
-          <button
-            className="movie-card__button movie-card__button_type_delete"
-            type="button"
-          ></button>
+        <h2 className="movie-card__title">{card.nameRU}</h2>
+        {isSavedMovies ? (
+          <button type="button" className="movie-card__button movie-card__button_type_delete" onClick={onButtonDeleteClick}></button>
         ) : (
-          <button
-            className="movie-card__button movie-card__button_type_like"
-            type="button"
-          ></button>
+          <button type="button" className={cardSaveButtonClassName} onClick={onButttonClick}></button>
         )}
       </div>
-      <p className="movie-card__duration">{duration}</p>
+      <p className="movie-card__duration">{convertDuration(card.duration)}</p>
     </article>
   );
 };
