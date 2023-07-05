@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 20px;
 }
 .profile__title {
   margin: 0 auto 104px;
@@ -73,7 +74,6 @@
     height: calc(100vh - 170px);
     padding: 70px 0 0;
     width: 300px;
-    justify-content: space-between;
   }
   .profile__title {
     margin: 0 auto;
